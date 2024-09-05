@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>pngegg.png</file>
+    </qresource>
+</RCC>
