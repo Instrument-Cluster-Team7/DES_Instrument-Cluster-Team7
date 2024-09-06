@@ -8,7 +8,7 @@
 const int SPI_CS_PIN = 9;
 
 //set the variables of speed sensor
-#define ENCODER 3 //light detecting pin, connect D0 with 2
+#define ENCODER 3 //light detecting pin, connect D0 with 3
 #define CIRCUMFERENCE 0.214 //enter in meter
 volatile unsigned int counter = 0;
 float rpm;
