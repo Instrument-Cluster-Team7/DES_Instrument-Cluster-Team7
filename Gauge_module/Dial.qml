@@ -3,7 +3,7 @@ import QtQuick 2.0
 Item {
     id: bg_dial
 
-    property int dialSize: 300
+    property int dialSize: 360
 
     width: dialSize
     height: dialSize
@@ -12,10 +12,10 @@ Item {
         anchors.fill: parent
         onPaint: {
             var ctx = getContext("2d");
-            ctx.clearRect(0, 0, width, height);
+            ctx.clearRect(0, 0, bg_dial.width, bg_dial.height);
 
             ctx.beginPath();
-            ctx.arc(bg_dial.dialSize/2, bg_dial.dialSize/2, bg_dial.width / 2 - 10, 0, Math.PI * 2);
+            ctx.arc(bg_dial.dialSize / 2, bg_dial.dialSize / 2, bg_dial.dialSize / 2 - 10, 0, Math.PI * 2);
             ctx.lineWidth = 5;
             ctx.strokeStyle = "#00b890";
             ctx.stroke();
