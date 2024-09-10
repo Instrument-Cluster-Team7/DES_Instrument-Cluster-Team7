@@ -5,6 +5,7 @@
 #include <QElapsedTimer>
 #include <QQmlContext>
 #include <QCoreApplication>
+#include <QPropertyAnimation>
 
 #include "Clock.h"
 #include "speedProvider.h"
@@ -87,14 +88,25 @@ int main(int argc, char *argv[])
 
     std::srand(std::time(nullptr));
     QTimer *timer_test_rpm = new QTimer(&app);
+
+    QPropertyAnimation animation(speedometerObj, "speed");
+    animation.setDuration(1000);
+    animation.setEasingCurve(QEasingCurve::OutCubic);
+
     QObject::connect(timer_test_rpm, &QTimer::timeout, [&](){
         speed = static_cast<qreal>(std::rand()) / RAND_MAX;
         rpm = calculateRPM(speed, tire_circumference, gear_ratio);
-        ptrSpeedometer->setSpeed(rpm);
+//        ptrSpeedometer->setSpeed(rpm);
+
+        animation.setStartValue(speedometerObj->property("speed"));
+        animation.setEndValue(rpm);
+        animation.start();
+
+        engine.rootContext()->setContextProperty("rpm_value", static_cast<int>(rpm));
 
         qDebug() << "Random Speed: " << speed << " km/h, RPM: " << rpm;
     });
-    timer_test_rpm->start(500);
+    timer_test_rpm->start(1000);
 
     return app.exec();
 }

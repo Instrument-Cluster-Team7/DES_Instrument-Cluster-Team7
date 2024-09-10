@@ -120,7 +120,9 @@ CMakeFiles/Instrument_cluster_right.dir/main.cpp.o: /usr/include/x86_64-linux-gn
 CMakeFiles/Instrument_cluster_right.dir/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/QElapsedTimer
 CMakeFiles/Instrument_cluster_right.dir/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/QList
 CMakeFiles/Instrument_cluster_right.dir/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/QObject
+CMakeFiles/Instrument_cluster_right.dir/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/QPropertyAnimation
 CMakeFiles/Instrument_cluster_right.dir/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/QTimer
+CMakeFiles/Instrument_cluster_right.dir/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/qabstractanimation.h
 CMakeFiles/Instrument_cluster_right.dir/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/qalgorithms.h
 CMakeFiles/Instrument_cluster_right.dir/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/qarraydata.h
 CMakeFiles/Instrument_cluster_right.dir/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/qatomic.h
@@ -141,6 +143,7 @@ CMakeFiles/Instrument_cluster_right.dir/main.cpp.o: /usr/include/x86_64-linux-gn
 CMakeFiles/Instrument_cluster_right.dir/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/qcoreevent.h
 CMakeFiles/Instrument_cluster_right.dir/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/qdatastream.h
 CMakeFiles/Instrument_cluster_right.dir/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/qdebug.h
+CMakeFiles/Instrument_cluster_right.dir/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/qeasingcurve.h
 CMakeFiles/Instrument_cluster_right.dir/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/qelapsedtimer.h
 CMakeFiles/Instrument_cluster_right.dir/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/qeventloop.h
 CMakeFiles/Instrument_cluster_right.dir/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/qfile.h
@@ -170,6 +173,7 @@ CMakeFiles/Instrument_cluster_right.dir/main.cpp.o: /usr/include/x86_64-linux-gn
 CMakeFiles/Instrument_cluster_right.dir/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/qpair.h
 CMakeFiles/Instrument_cluster_right.dir/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/qpoint.h
 CMakeFiles/Instrument_cluster_right.dir/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/qprocessordetection.h
+CMakeFiles/Instrument_cluster_right.dir/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/qpropertyanimation.h
 CMakeFiles/Instrument_cluster_right.dir/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/qrect.h
 CMakeFiles/Instrument_cluster_right.dir/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/qrefcount.h
 CMakeFiles/Instrument_cluster_right.dir/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/qregexp.h
@@ -195,6 +199,7 @@ CMakeFiles/Instrument_cluster_right.dir/main.cpp.o: /usr/include/x86_64-linux-gn
 CMakeFiles/Instrument_cluster_right.dir/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/qurl.h
 CMakeFiles/Instrument_cluster_right.dir/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/qurlquery.h
 CMakeFiles/Instrument_cluster_right.dir/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/qvariant.h
+CMakeFiles/Instrument_cluster_right.dir/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/qvariantanimation.h
 CMakeFiles/Instrument_cluster_right.dir/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/qvarlengtharray.h
 CMakeFiles/Instrument_cluster_right.dir/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/qvector.h
 CMakeFiles/Instrument_cluster_right.dir/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/qversiontagging.h

@@ -101,7 +101,8 @@ ApplicationWindow  {
             font.pixelSize: 55 // 30
             color: "white"
 
-            text: Math.floor(rpm_speedometer.speed) // Math.floor(Math.random() * 101);
+            text: rpm_value
+            //text: Math.floor(rpm_speedometer.speed) // Math.floor(Math.random() * 101);
         }
 
         Text {
@@ -124,7 +125,7 @@ ApplicationWindow  {
             height: 360
             anchors.centerIn: parent
             fillMode: Image.PreserveAspectFit
-            source: "Ellipse 1.svg"
+            source: "out_ring.png"
         }
 
         Image {
@@ -183,7 +184,7 @@ ApplicationWindow  {
             anchors.bottom: parent.bottom
             font.pixelSize: 18 // 30
             color: "white"
-            text: Math.floor(battery_value * 101) + "%" // Math.floor(Math.random() * 101);
+            text: Math.floor(battery_value * 100) + "%" // Math.floor(Math.random() * 101);
 
             anchors.verticalCenterOffset: 36
             anchors.horizontalCenterOffset: 0
@@ -216,7 +217,7 @@ ApplicationWindow  {
     Text {
         id: running_rate
         text: "Running Rate: " + timeformat(elapsedTime)
-        anchors.verticalCenterOffset: 159
+        anchors.verticalCenterOffset: 164
         anchors.horizontalCenterOffset: 0 // "Running Rate: " + elapsedTime + " seconds"
         anchors.centerIn: parent
         font.pixelSize: 13
@@ -225,23 +226,64 @@ ApplicationWindow  {
 
 
     /*///////////////////////////////////////////////////////// background */
+    // version 1
+    //    Image {
+    //        id: left_load
+    //        x: 486
+    //        y: 134
+    //        width: 135
+    //        height: 266
+    //        source: "Vector 1.svg"
+    //        fillMode: Image.PreserveAspectFit
+    //    }
+
+    //    Image {
+    //        id: right_load
+    //        x: 665
+    //        y: 134
+    //        width: 135
+    //        height: 266
+    //        source: "Vector 2.svg"
+    //        fillMode: Image.PreserveAspectFit
+    //    }
+
+    // version 2
     Image {
-        id: left_load
-        x: 486
-        y: 134
-        width: 135
-        height: 266
-        source: "Vector 1.svg"
+        id: background
+        x: 430 //430
+        y: 157 //158
         fillMode: Image.PreserveAspectFit
+        source:  "back_ground_bright.png" // "background_g.png"
+
+        Image {
+            id: highlight
+            x: 0
+            y: 0
+            fillMode: Image.PreserveAspectFit
+            source: "car-highlights.png"
+        }
     }
 
     Image {
-        id: right_load
-        x: 665
-        y: 134
-        width: 135
-        height: 266
-        source: "Vector 2.svg"
+        id: top_bar
+        x: 353
+        y: 0
+        width: 575
+        height: 79
         fillMode: Image.PreserveAspectFit
+        source: "Vector 70.svg"
     }
+
+//    Image {
+//        id: bottom_bar
+//        x: 346
+//        y: 400
+//        width: 588
+//        height: 84
+//        transform: Scale {
+//            yScale: -1
+//        }
+//        fillMode: Image.PreserveAspectFit
+//        source: "Vector 70.svg"
+//    }
 }

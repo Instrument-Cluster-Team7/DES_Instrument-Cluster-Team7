@@ -11,5 +11,11 @@
         <file>bg-mask.png</file>
         <file>car_frame.png</file>
         <file>volkswagen_car.png</file>
+        <file>out_ring.png</file>
+        <file>background_g.png</file>
+        <file>highlight_g.png</file>
+        <file>bright_highlight.png</file>
+        <file>car-highlights.png</file>
+        <file>pngwing.com(2).png</file>
     </qresource>
 </RCC>

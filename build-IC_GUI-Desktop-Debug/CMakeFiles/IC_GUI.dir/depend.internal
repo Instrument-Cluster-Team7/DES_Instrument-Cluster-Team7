@@ -134,7 +134,9 @@ CMakeFiles/IC_GUI.dir/main.cpp.o
  /usr/include/x86_64-linux-gnu/qt5/QtCore/QElapsedTimer
  /usr/include/x86_64-linux-gnu/qt5/QtCore/QList
  /usr/include/x86_64-linux-gnu/qt5/QtCore/QObject
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/QPropertyAnimation
  /usr/include/x86_64-linux-gnu/qt5/QtCore/QTimer
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/qabstractanimation.h
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qalgorithms.h
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qarraydata.h
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qatomic.h
@@ -156,6 +158,7 @@ CMakeFiles/IC_GUI.dir/main.cpp.o
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qdatastream.h
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qdatetime.h
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qdebug.h
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/qeasingcurve.h
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qelapsedtimer.h
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qeventloop.h
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qfile.h
@@ -185,6 +188,7 @@ CMakeFiles/IC_GUI.dir/main.cpp.o
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qpair.h
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qpoint.h
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qprocessordetection.h
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/qpropertyanimation.h
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qrect.h
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qrefcount.h
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qregexp.h
@@ -210,6 +214,7 @@ CMakeFiles/IC_GUI.dir/main.cpp.o
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qurl.h
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qurlquery.h
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qvariant.h
+ /usr/include/x86_64-linux-gnu/qt5/QtCore/qvariantanimation.h
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qvarlengtharray.h
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qvector.h
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qversiontagging.h

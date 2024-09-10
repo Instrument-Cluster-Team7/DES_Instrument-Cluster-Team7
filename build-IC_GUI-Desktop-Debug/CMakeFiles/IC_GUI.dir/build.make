@@ -63,10 +63,15 @@ IC_GUI_autogen/EWIEGA46WW/qrc_qml.cpp: /home/llj/catkin_ws/src/DES_Instrument-Cl
 IC_GUI_autogen/EWIEGA46WW/qrc_qml.cpp: /home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/IC_GUI/battery.png
 IC_GUI_autogen/EWIEGA46WW/qrc_qml.cpp: /home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/IC_GUI/SpeedText.qml
 IC_GUI_autogen/EWIEGA46WW/qrc_qml.cpp: /home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/IC_GUI/ring.svg
+IC_GUI_autogen/EWIEGA46WW/qrc_qml.cpp: /home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/IC_GUI/back_ground_bright.png
 IC_GUI_autogen/EWIEGA46WW/qrc_qml.cpp: /home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/IC_GUI/Ellipse\ 1.svg
+IC_GUI_autogen/EWIEGA46WW/qrc_qml.cpp: /home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/IC_GUI/background_g.png
+IC_GUI_autogen/EWIEGA46WW/qrc_qml.cpp: /home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/IC_GUI/Vector\ 70.svg
 IC_GUI_autogen/EWIEGA46WW/qrc_qml.cpp: /home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/IC_GUI/Vector\ 2.svg
 IC_GUI_autogen/EWIEGA46WW/qrc_qml.cpp: /home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/IC_GUI/Vector\ 1.svg
+IC_GUI_autogen/EWIEGA46WW/qrc_qml.cpp: /home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/IC_GUI/car-highlights.png
 IC_GUI_autogen/EWIEGA46WW/qrc_qml.cpp: /home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/IC_GUI/Dial.qml
+IC_GUI_autogen/EWIEGA46WW/qrc_qml.cpp: /home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/IC_GUI/out_ring.png
 IC_GUI_autogen/EWIEGA46WW/qrc_qml.cpp: /home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/IC_GUI/main.qml
 IC_GUI_autogen/EWIEGA46WW/qrc_qml.cpp: /usr/lib/qt5/bin/rcc
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/build-IC_GUI-Desktop-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic RCC for qml.qrc"
