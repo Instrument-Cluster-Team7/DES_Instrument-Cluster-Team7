@@ -200,10 +200,31 @@ Window {
     Text {
         id: running_rate
         text: "Running Rate: " + timeformat(elapsedTime)
-        anchors.verticalCenterOffset: 158
+        anchors.verticalCenterOffset: 159
         anchors.horizontalCenterOffset: 0 // "Running Rate: " + elapsedTime + " seconds"
         anchors.centerIn: parent
         font.pixelSize: 13
         color: "white"
+    }
+
+    /*///////////////////////////////////////////////////////// background_component */
+    Image {
+        id: left_load
+        x: 486
+        y: 134
+        width: 135
+        height: 266
+        source: "Vector 1.svg"
+        fillMode: Image.PreserveAspectFit
+    }
+
+    Image {
+        id: right_load
+        x: 665
+        y: 134
+        width: 135
+        height: 266
+        source: "Vector 2.svg"
+        fillMode: Image.PreserveAspectFit
     }
 }

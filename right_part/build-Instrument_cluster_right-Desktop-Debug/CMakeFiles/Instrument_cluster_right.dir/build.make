@@ -62,8 +62,13 @@ Instrument_cluster_right_autogen/EWIEGA46WW/qrc_qml.cpp: CMakeFiles/Instrument_c
 Instrument_cluster_right_autogen/EWIEGA46WW/qrc_qml.cpp: /home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/right_part/Instrument_cluster_right/battery.png
 Instrument_cluster_right_autogen/EWIEGA46WW/qrc_qml.cpp: /home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/right_part/Instrument_cluster_right/ring.svg
 Instrument_cluster_right_autogen/EWIEGA46WW/qrc_qml.cpp: /home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/right_part/Instrument_cluster_right/Ellipse\ 1.svg
+Instrument_cluster_right_autogen/EWIEGA46WW/qrc_qml.cpp: /home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/right_part/Instrument_cluster_right/Vector\ 70.svg
 Instrument_cluster_right_autogen/EWIEGA46WW/qrc_qml.cpp: /home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/right_part/Instrument_cluster_right/Subtract.svg
-Instrument_cluster_right_autogen/EWIEGA46WW/qrc_qml.cpp: /home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/right_part/Instrument_cluster_right/sub.svg
+Instrument_cluster_right_autogen/EWIEGA46WW/qrc_qml.cpp: /home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/right_part/Instrument_cluster_right/Vector\ 2.svg
+Instrument_cluster_right_autogen/EWIEGA46WW/qrc_qml.cpp: /home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/right_part/Instrument_cluster_right/car_frame.png
+Instrument_cluster_right_autogen/EWIEGA46WW/qrc_qml.cpp: /home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/right_part/Instrument_cluster_right/volkswagen_car.png
+Instrument_cluster_right_autogen/EWIEGA46WW/qrc_qml.cpp: /home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/right_part/Instrument_cluster_right/Vector\ 1.svg
+Instrument_cluster_right_autogen/EWIEGA46WW/qrc_qml.cpp: /home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/right_part/Instrument_cluster_right/bg-mask.png
 Instrument_cluster_right_autogen/EWIEGA46WW/qrc_qml.cpp: /home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/right_part/Instrument_cluster_right/main.qml
 Instrument_cluster_right_autogen/EWIEGA46WW/qrc_qml.cpp: /usr/lib/qt5/bin/rcc
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/right_part/build-Instrument_cluster_right-Desktop-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic RCC for qml.qrc"
