@@ -40,7 +40,7 @@ DISTNAME      = Guage1.0.0
 DISTDIR = /home/yeongyoo/DES_Instrument-Cluster-Team7/Gauge/Guage/build/Desktop-Debug/.tmp/Guage1.0.0
 LINK          = clang++
 LFLAGS        = -ccc-gcc-name g++
-LIBS          = $(SUBLIBS) /usr/lib/x86_64-linux-gnu/libQt5Quick.so /usr/lib/x86_64-linux-gnu/libQt5Gui.so /usr/lib/x86_64-linux-gnu/libQt5QmlModels.so /usr/lib/x86_64-linux-gnu/libQt5Qml.so /usr/lib/x86_64-linux-gnu/libQt5Network.so /usr/lib/x86_64-linux-gnu/libQt5Core.so -lGL -lpthread   
+LIBS          = $(SUBLIBS) -lnsl /usr/lib/x86_64-linux-gnu/libQt5Quick.so /usr/lib/x86_64-linux-gnu/libQt5Gui.so /usr/lib/x86_64-linux-gnu/libQt5QmlModels.so /usr/lib/x86_64-linux-gnu/libQt5Qml.so /usr/lib/x86_64-linux-gnu/libQt5Network.so /usr/lib/x86_64-linux-gnu/libQt5Core.so -lGL -lpthread   
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -52,14 +52,16 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../../fuckcheck.cpp \
-		../../main.cpp \
+SOURCES       = ../../main.cpp \
+		../../receiver.cpp \
 		../../speedometer.cpp qrc_qml.cpp \
+		moc_receiver.cpp \
 		moc_speedometer.cpp
-OBJECTS       = fuckcheck.o \
-		main.o \
+OBJECTS       = main.o \
+		receiver.o \
 		speedometer.o \
 		qrc_qml.o \
+		moc_receiver.o \
 		moc_speedometer.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
@@ -145,9 +147,9 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exceptions.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
-		../../../../Guage.pro ../../fuckcheck.h \
-		../../speedometer.h ../../fuckcheck.cpp \
-		../../main.cpp \
+		../../../../Guage.pro ../../receiver.h \
+		../../speedometer.h ../../main.cpp \
+		../../receiver.cpp \
 		../../speedometer.cpp
 QMAKE_TARGET  = Guage
 DESTDIR       = 
@@ -349,8 +351,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../qml.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../../fuckcheck.h ../../speedometer.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../../fuckcheck.cpp ../../main.cpp ../../speedometer.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../../receiver.h ../../speedometer.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../../main.cpp ../../receiver.cpp ../../speedometer.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -389,9 +391,14 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 	clang++ -pipe -g -std=gnu++11 -Wall -Wextra -dM -E -o moc_predefs.h /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_speedometer.cpp
+compiler_moc_header_make_all: moc_receiver.cpp moc_speedometer.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_speedometer.cpp
+	-$(DEL_FILE) moc_receiver.cpp moc_speedometer.cpp
+moc_receiver.cpp: ../../receiver.h \
+		moc_predefs.h \
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/yeongyoo/DES_Instrument-Cluster-Team7/Gauge/Guage/build/Desktop-Debug/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-clang -I/home/yeongyoo/DES_Instrument-Cluster-Team7/Gauge/Guage -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtQuick -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtQmlModels -I/usr/include/x86_64-linux-gnu/qt5/QtQml -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/13 -I/usr/include/x86_64-linux-gnu/c++/13 -I/usr/include/c++/13/backward -I/usr/lib/llvm-18/lib/clang/18/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../../receiver.h -o moc_receiver.cpp
+
 moc_speedometer.cpp: ../../speedometer.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
@@ -411,17 +418,21 @@ compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_heade
 
 ####### Compile
 
-fuckcheck.o: ../../fuckcheck.cpp ../../fuckcheck.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o fuckcheck.o ../../fuckcheck.cpp
-
-main.o: ../../main.cpp ../../speedometer.h
+main.o: ../../main.cpp ../../receiver.h \
+		../../speedometer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../../main.cpp
+
+receiver.o: ../../receiver.cpp ../../receiver.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o receiver.o ../../receiver.cpp
 
 speedometer.o: ../../speedometer.cpp ../../speedometer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o speedometer.o ../../speedometer.cpp
 
 qrc_qml.o: qrc_qml.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_qml.o qrc_qml.cpp
+
+moc_receiver.o: moc_receiver.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_receiver.o moc_receiver.cpp
 
 moc_speedometer.o: moc_speedometer.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_speedometer.o moc_speedometer.cpp

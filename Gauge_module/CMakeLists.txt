@@ -37,6 +37,7 @@ else()
       qml.qrc
       Clock.h
       speedProvider.h
+      receiver.h receiver.cpp
     )
 endif()
 

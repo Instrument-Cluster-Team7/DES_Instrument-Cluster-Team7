@@ -2,7 +2,7 @@
 #define SPEEDPROVIDER_H
 
 #include <QObject>
-#include <QTimer>
+#include "receiver.h"
 #include <cstdlib>
 #include <ctime>
 
@@ -15,12 +15,12 @@ public:
     explicit SpeedProvider(QObject *parent = nullptr)
         : QObject(parent), m_speedValue(0)
     {
-        std::srand(static_cast<unsigned int>(std::time(nullptr)));  // 시드 설정
 
-        // 1초마다 랜덤 값을 생성하기 위한 타이머 설정
-        QTimer *timer = new QTimer(this);
-        connect(timer, &QTimer::timeout, this, &SpeedProvider::generateSpeed);
-        timer->start(1000); // 1초마다 랜덤 값 생성
+        Receiver * rcv = new Receiver();
+        if (rcv->initialize() == Receiver::SUCCEDED){
+            QObject::connect(rcv, &Receiver::speedReceived, this, &SpeedProvider::speedChange);
+            rcv->start();
+        }
     }
 
     int speedValue() const
@@ -60,6 +60,13 @@ signals:
     void maxSpeedChanged();
 
 private slots:
+    void speedChange(float speed){
+        if (m_speedValue != speed){
+            m_speedValue = speed;
+            emit speedChanged();
+        }
+    }
+
     void generateSpeed()
     {
         if(m_minSpeed < m_maxSpeed){
@@ -69,7 +76,7 @@ private slots:
     }
 
 private:
-    int m_speedValue;  // 현재 속도 값
+    float m_speedValue;  // 현재 속도 값
     int m_minSpeed;
     int m_maxSpeed;
 };
