@@ -4,5 +4,10 @@
         <file>Dial.qml</file>
         <file>Needle.qml</file>
         <file>SpeedText.qml</file>
+        <file>Ellipse 1.svg</file>
+        <file>ring.svg</file>
+        <file>battery.png</file>
+        <file>Vector 1.svg</file>
+        <file>Vector 2.svg</file>
     </qresource>
 </RCC>

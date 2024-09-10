@@ -30,11 +30,15 @@ if(ANDROID)
     add_library(IC_GUI SHARED
       main.cpp
       qml.qrc
+      rpm_gauge.cpp
     )
 else()
     add_executable(IC_GUI
       main.cpp
       qml.qrc
+      rpm_gauge.cpp
+      rpm_gauge.h
+
       Clock.h
       speedProvider.h
     )
