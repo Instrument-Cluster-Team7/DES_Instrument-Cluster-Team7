@@ -1,5 +1,4 @@
 QT += quick
-
 CONFIG += c++11
 
 # The following define makes your compiler emit warnings if you use
@@ -15,6 +14,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
+        receiver.cpp \
         speedometer.cpp
 
 RESOURCES += qml.qrc
@@ -31,4 +31,9 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
+    receiver.h \
     speedometer.h
+
+# Add POSIX or Winsock libraries if necessary
+unix: LIBS += -lnsl
+win32: LIBS += -lws2_32

@@ -2,7 +2,7 @@
 #include <QQmlApplicationEngine>
 #include <QTimer> // timer for periodic task
 #include <QDebug>
-
+#include "receiver.h"
 #include "speedometer.h"
 
 int main(int argc, char *argv[])
@@ -30,7 +30,6 @@ int main(int argc, char *argv[])
     // check if QML loaded successfuly
     engine.load(url); // load specified url's QML file
 
-
     // find root object
     QObject *object = engine.rootObjects().isEmpty() ? nullptr : engine.rootObjects().first();
     if (!object) {
@@ -44,6 +43,7 @@ int main(int argc, char *argv[])
         qCritical() << "Speedometer object not found in QML!";
         return -1;
     }
+
     // engine.rootObjects() : bring root object from QML file
     // findChild : find QML object which is named 'speedoMeter'
 
@@ -56,29 +56,17 @@ int main(int argc, char *argv[])
 
     // using timer to check variation of Guage
     qreal val = 0;
-    ptrSpeedometer->setSpeed(val);
+    ptrSpeedometer->setSpeed(0);
 
-    QTimer *timer1 = new QTimer(&app);
-    bool direction;
+    Receiver * rcv = new Receiver(&val);
+    if (rcv->initialize() == Receiver::SUCCEDED){
+        QObject::connect(rcv, &Receiver::speedReceived, ptrSpeedometer, &speedometer::setSpeed);
+        rcv->start();
+    }
+    else{
+        qDebug() << "CAN Communication finally failed!";
+    }
 
-    QObject::connect(timer1, &QTimer::timeout, [&]() {
-//        // just increase the speed value [infinitely]
-//        val += 1;
-
-        if(val >= 4000)
-            direction = false;
-        else if (val <= 0.1)
-            direction = true;
-
-        if(direction)
-            val = val + 10;
-        else
-            val = val - 10;
-
-        ptrSpeedometer->setSpeed(val);
-    });
-
-    timer1->start(10);
 
     return app.exec();
 }
