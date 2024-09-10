@@ -2,17 +2,19 @@
 
 #include <QPainter>
 
+// rpm = speed*1000/(tire_circumference * gear_ratio)
 rpm_gauge::rpm_gauge(QQuickItem *parent)
     :QQuickPaintedItem(parent),
-      m_SpeedometerSize(380), // touch screen is 800 x 480
+      m_SpeedometerSize(320), // touch screen is 800 x 480 : 380
       m_StartAngle(50), // 50
-      m_AlignAngle(260), // it should be 360 - m_StartAngle*3 for good looking
+      m_AlignAngle(260), // 260
+      // it should be 360 - m_StartAngle*3 for good looking
       m_LowestRange(0),
-      m_HighestRange(4000),
-      m_Speed(2430), // 1230
-      m_ArcWidth(15),
-      m_OuterColor(QColor("#00b890")), // QColor(12,16,247)
-      m_InnerColor(QColor(51,88,255,80)), // QColor(51,88,255,80)
+      m_HighestRange(4000), // 4000
+      m_Speed(1000), // 1230
+      m_ArcWidth(30),
+      m_OuterColor(QColor("#00b890")), // QColor(12,16,247) 00b890
+      m_InnerColor(QColor("#a2f2d9")), // QColor(51,88,255,80) a2f2d9
       m_TextColor(QColor("#ffffff")), // QColor(255,255,255)
       m_BackgroundColor(Qt::transparent)
 {
@@ -28,8 +30,8 @@ void rpm_gauge::paint(QPainter *painter){
     double startAngle;
     double spanAngle;
 
-    startAngle = m_StartAngle - 40;
-    spanAngle = 0 - m_AlignAngle;
+    startAngle = m_StartAngle - 20;
+    spanAngle = -40 - m_AlignAngle;
 
     // outer pie
     painter->save();
@@ -49,16 +51,16 @@ void rpm_gauge::paint(QPainter *painter){
 //    painter->restore();
 
     // text that shows the value
-    painter->save();
-    QFont font("Halvetica", 52, QFont::Bold);
-    painter->setFont(font);
-    pen.setColor(m_TextColor);
-    painter->setPen(pen);
-//    painter->drawText(rect.adjusted(m_SpeedometerSize/30, m_SpeedometerSize/30, -m_SpeedometerSize/30, -m_SpeedometerSize/5),
+//    painter->save();
+//    QFont font("Halvetica", 52, QFont::Bold);
+//    painter->setFont(font);
+//    pen.setColor(m_TextColor);
+//    painter->setPen(pen);
+////    painter->drawText(rect.adjusted(m_SpeedometerSize/30, m_SpeedometerSize/30, -m_SpeedometerSize/30, -m_SpeedometerSize/5),
+////                      Qt::AlignCenter, QString::number((m_Speed/40), 'f', 1));
+//    painter->drawText(rect.adjusted(m_SpeedometerSize/30, m_SpeedometerSize/2, -m_SpeedometerSize/30, -m_SpeedometerSize/5),
 //                      Qt::AlignCenter, QString::number((m_Speed/40), 'f', 1));
-    painter->drawText(rect.adjusted(m_SpeedometerSize/30, m_SpeedometerSize/2, -m_SpeedometerSize/30, -m_SpeedometerSize/5),
-                      Qt::AlignCenter, QString::number((m_Speed/40), 'f', 1));
-    painter->restore();
+//    painter->restore();
 
     // current progress
     painter->save();

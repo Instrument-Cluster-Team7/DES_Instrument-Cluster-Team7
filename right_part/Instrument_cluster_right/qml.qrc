@@ -2,5 +2,9 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>battery.png</file>
+        <file>Ellipse 1.svg</file>
+        <file>Subtract.svg</file>
+        <file>ring.svg</file>
+        <file>sub.svg</file>
     </qresource>
 </RCC>
