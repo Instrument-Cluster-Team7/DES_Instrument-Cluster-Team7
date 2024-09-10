@@ -9,7 +9,7 @@
 class SpeedProvider : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(int speedValue READ speedValue NOTIFY speedChanged)
+    Q_PROPERTY(float speedValue READ speedValue NOTIFY speedChanged)
 
 public:
     explicit SpeedProvider(QObject *parent = nullptr)
