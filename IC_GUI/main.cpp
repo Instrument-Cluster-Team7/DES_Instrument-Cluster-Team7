@@ -10,9 +10,10 @@
 #include "Clock.h"
 #include "speedProvider.h"
 #include "rpm_gauge.h"
+#include "receiver.h"
 
-qreal calculateRPM(qreal speed, qreal tire_circumference, qreal gear_ratio){
-    return (speed * 1000) / (tire_circumference * gear_ratio);
+qreal calculateSpeed(qreal rpm, qreal tire_circumference){
+    return rpm * tire_circumference * 0.06;
 }
 
 int main(int argc, char *argv[])
@@ -81,10 +82,12 @@ int main(int argc, char *argv[])
 
 
     /*///////////////////////////////////////////////////////// test RPM gauge with random speed */
-    qreal tire_circumference = 0.1741;
+    qreal tire_circumference = 0.214;
     qreal gear_ratio = 2.0;
     qreal speed = 0.0;
     qreal rpm = 0.0;
+    Receiver rcv;
+
 
     std::srand(std::time(nullptr));
     QTimer *timer_test_rpm = new QTimer(&app);
@@ -93,20 +96,23 @@ int main(int argc, char *argv[])
     animation.setDuration(1000);
     animation.setEasingCurve(QEasingCurve::OutCubic);
 
-    QObject::connect(timer_test_rpm, &QTimer::timeout, [&](){
-        speed = static_cast<qreal>(std::rand()) / RAND_MAX;
-        rpm = calculateRPM(speed, tire_circumference, gear_ratio);
-//        ptrSpeedometer->setSpeed(rpm);
+    if (rcv.initialize() == Receiver::SUCCEDED){
+        QObject::connect(&rcv, &Receiver::speedReceived, [&](int rpm){
 
-        animation.setStartValue(speedometerObj->property("speed"));
-        animation.setEndValue(rpm);
-        animation.start();
+            animation.setStartValue(speedometerObj->property("speed"));
+            animation.setEndValue(rpm);
+            animation.start();
 
-        engine.rootContext()->setContextProperty("rpm_value", static_cast<int>(rpm));
+            float speed_kmh = calculateSpeed(rpm, tire_circumference);
+            speedProvider.setSpeed(speed_kmh);
+            engine.rootContext()->setContextProperty("rpm_value", static_cast<int>(rpm));
 
-        qDebug() << "Random Speed: " << speed << " km/h, RPM: " << rpm;
-    });
-    timer_test_rpm->start(1000);
+            qDebug() << "Random Speed: " << speed_kmh << " km/h, RPM: " << rpm;
+        });
+    }
+    else{
+        qDebug() << "CAN connection failed";
+    }
 
     return app.exec();
 }

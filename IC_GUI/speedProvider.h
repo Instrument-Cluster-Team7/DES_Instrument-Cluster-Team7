@@ -14,14 +14,7 @@ class SpeedProvider : public QObject
 public:
     explicit SpeedProvider(QObject *parent = nullptr)
         : QObject(parent), m_speedValue(0)
-    {
-        std::srand(static_cast<unsigned int>(std::time(nullptr)));  // 시드 설정
-
-        // 1초마다 랜덤 값을 생성하기 위한 타이머 설정
-        QTimer *timer = new QTimer(this);
-        connect(timer, &QTimer::timeout, this, &SpeedProvider::generateSpeed);
-        timer->start(1000); // 1초마다 랜덤 값 생성
-    }
+    {}
 
     int speedValue() const
     {
@@ -51,6 +44,12 @@ public:
         if(maxSpeed != m_maxSpeed){
             m_maxSpeed = maxSpeed;
             emit maxSpeedChanged();
+        }
+    }
+    void setSpeed(int speed){
+        if(speed != m_speedValue){
+            m_speedValue = speed;
+            emit speedChanged();
         }
     }
 
