@@ -13,9 +13,9 @@
 			"EWIEGA46WW/moc_Clock.cpp"
 		],
 		[
-			"/home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/IC_GUI/rpm_gauge.h",
+			"/home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/IC_GUI/battery_gauge.h",
 			"MU",
-			"EWIEGA46WW/moc_rpm_gauge.cpp"
+			"EWIEGA46WW/moc_battery_gauge.cpp"
 		],
 		[
 			"/home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/IC_GUI/speedProvider.h",
@@ -85,11 +85,11 @@
 	"SOURCES" : 
 	[
 		[
-			"/home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/IC_GUI/main.cpp",
+			"/home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/IC_GUI/battery_gauge.cpp",
 			"MU"
 		],
 		[
-			"/home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/IC_GUI/rpm_gauge.cpp",
+			"/home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/IC_GUI/main.cpp",
 			"MU"
 		]
 	],

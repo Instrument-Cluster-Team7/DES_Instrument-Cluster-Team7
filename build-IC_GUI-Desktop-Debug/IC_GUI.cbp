@@ -127,16 +127,16 @@
 		<Unit filename="/home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/IC_GUI/Clock.h">
 			<Option target="IC_GUI"/>
 		</Unit>
+		<Unit filename="/home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/IC_GUI/battery_gauge.cpp">
+			<Option target="IC_GUI"/>
+		</Unit>
+		<Unit filename="/home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/IC_GUI/battery_gauge.h">
+			<Option target="IC_GUI"/>
+		</Unit>
 		<Unit filename="/home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/IC_GUI/main.cpp">
 			<Option target="IC_GUI"/>
 		</Unit>
 		<Unit filename="/home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/IC_GUI/qml.qrc">
-			<Option target="IC_GUI"/>
-		</Unit>
-		<Unit filename="/home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/IC_GUI/rpm_gauge.cpp">
-			<Option target="IC_GUI"/>
-		</Unit>
-		<Unit filename="/home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/IC_GUI/rpm_gauge.h">
 			<Option target="IC_GUI"/>
 		</Unit>
 		<Unit filename="/home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/IC_GUI/speedProvider.h">

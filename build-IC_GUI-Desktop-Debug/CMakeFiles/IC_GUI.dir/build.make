@@ -103,18 +103,18 @@ CMakeFiles/IC_GUI.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/IC_GUI.dir/main.cpp.s"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/IC_GUI/main.cpp -o CMakeFiles/IC_GUI.dir/main.cpp.s
 
-CMakeFiles/IC_GUI.dir/rpm_gauge.cpp.o: CMakeFiles/IC_GUI.dir/flags.make
-CMakeFiles/IC_GUI.dir/rpm_gauge.cpp.o: /home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/IC_GUI/rpm_gauge.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/build-IC_GUI-Desktop-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/IC_GUI.dir/rpm_gauge.cpp.o"
-	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/IC_GUI.dir/rpm_gauge.cpp.o -c /home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/IC_GUI/rpm_gauge.cpp
+CMakeFiles/IC_GUI.dir/battery_gauge.cpp.o: CMakeFiles/IC_GUI.dir/flags.make
+CMakeFiles/IC_GUI.dir/battery_gauge.cpp.o: /home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/IC_GUI/battery_gauge.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/build-IC_GUI-Desktop-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/IC_GUI.dir/battery_gauge.cpp.o"
+	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/IC_GUI.dir/battery_gauge.cpp.o -c /home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/IC_GUI/battery_gauge.cpp
 
-CMakeFiles/IC_GUI.dir/rpm_gauge.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/IC_GUI.dir/rpm_gauge.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/IC_GUI/rpm_gauge.cpp > CMakeFiles/IC_GUI.dir/rpm_gauge.cpp.i
+CMakeFiles/IC_GUI.dir/battery_gauge.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/IC_GUI.dir/battery_gauge.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/IC_GUI/battery_gauge.cpp > CMakeFiles/IC_GUI.dir/battery_gauge.cpp.i
 
-CMakeFiles/IC_GUI.dir/rpm_gauge.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/IC_GUI.dir/rpm_gauge.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/IC_GUI/rpm_gauge.cpp -o CMakeFiles/IC_GUI.dir/rpm_gauge.cpp.s
+CMakeFiles/IC_GUI.dir/battery_gauge.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/IC_GUI.dir/battery_gauge.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/IC_GUI/battery_gauge.cpp -o CMakeFiles/IC_GUI.dir/battery_gauge.cpp.s
 
 CMakeFiles/IC_GUI.dir/IC_GUI_autogen/EWIEGA46WW/qrc_qml.cpp.o: CMakeFiles/IC_GUI.dir/flags.make
 CMakeFiles/IC_GUI.dir/IC_GUI_autogen/EWIEGA46WW/qrc_qml.cpp.o: IC_GUI_autogen/EWIEGA46WW/qrc_qml.cpp
@@ -133,7 +133,7 @@ CMakeFiles/IC_GUI.dir/IC_GUI_autogen/EWIEGA46WW/qrc_qml.cpp.s: cmake_force
 IC_GUI_OBJECTS = \
 "CMakeFiles/IC_GUI.dir/IC_GUI_autogen/mocs_compilation.cpp.o" \
 "CMakeFiles/IC_GUI.dir/main.cpp.o" \
-"CMakeFiles/IC_GUI.dir/rpm_gauge.cpp.o" \
+"CMakeFiles/IC_GUI.dir/battery_gauge.cpp.o" \
 "CMakeFiles/IC_GUI.dir/IC_GUI_autogen/EWIEGA46WW/qrc_qml.cpp.o"
 
 # External object files for target IC_GUI
@@ -141,7 +141,7 @@ IC_GUI_EXTERNAL_OBJECTS =
 
 IC_GUI: CMakeFiles/IC_GUI.dir/IC_GUI_autogen/mocs_compilation.cpp.o
 IC_GUI: CMakeFiles/IC_GUI.dir/main.cpp.o
-IC_GUI: CMakeFiles/IC_GUI.dir/rpm_gauge.cpp.o
+IC_GUI: CMakeFiles/IC_GUI.dir/battery_gauge.cpp.o
 IC_GUI: CMakeFiles/IC_GUI.dir/IC_GUI_autogen/EWIEGA46WW/qrc_qml.cpp.o
 IC_GUI: CMakeFiles/IC_GUI.dir/build.make
 IC_GUI: /usr/lib/x86_64-linux-gnu/libQt5Quick.so.5.12.8

@@ -190,6 +190,33 @@ IC_GUI_autogen/mocs_compilation.cpp.s:
 	$(MAKE) -f CMakeFiles/IC_GUI.dir/build.make CMakeFiles/IC_GUI.dir/IC_GUI_autogen/mocs_compilation.cpp.s
 .PHONY : IC_GUI_autogen/mocs_compilation.cpp.s
 
+battery_gauge.o: battery_gauge.cpp.o
+
+.PHONY : battery_gauge.o
+
+# target to build an object file
+battery_gauge.cpp.o:
+	$(MAKE) -f CMakeFiles/IC_GUI.dir/build.make CMakeFiles/IC_GUI.dir/battery_gauge.cpp.o
+.PHONY : battery_gauge.cpp.o
+
+battery_gauge.i: battery_gauge.cpp.i
+
+.PHONY : battery_gauge.i
+
+# target to preprocess a source file
+battery_gauge.cpp.i:
+	$(MAKE) -f CMakeFiles/IC_GUI.dir/build.make CMakeFiles/IC_GUI.dir/battery_gauge.cpp.i
+.PHONY : battery_gauge.cpp.i
+
+battery_gauge.s: battery_gauge.cpp.s
+
+.PHONY : battery_gauge.s
+
+# target to generate assembly for a file
+battery_gauge.cpp.s:
+	$(MAKE) -f CMakeFiles/IC_GUI.dir/build.make CMakeFiles/IC_GUI.dir/battery_gauge.cpp.s
+.PHONY : battery_gauge.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -217,33 +244,6 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/IC_GUI.dir/build.make CMakeFiles/IC_GUI.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-rpm_gauge.o: rpm_gauge.cpp.o
-
-.PHONY : rpm_gauge.o
-
-# target to build an object file
-rpm_gauge.cpp.o:
-	$(MAKE) -f CMakeFiles/IC_GUI.dir/build.make CMakeFiles/IC_GUI.dir/rpm_gauge.cpp.o
-.PHONY : rpm_gauge.cpp.o
-
-rpm_gauge.i: rpm_gauge.cpp.i
-
-.PHONY : rpm_gauge.i
-
-# target to preprocess a source file
-rpm_gauge.cpp.i:
-	$(MAKE) -f CMakeFiles/IC_GUI.dir/build.make CMakeFiles/IC_GUI.dir/rpm_gauge.cpp.i
-.PHONY : rpm_gauge.cpp.i
-
-rpm_gauge.s: rpm_gauge.cpp.s
-
-.PHONY : rpm_gauge.s
-
-# target to generate assembly for a file
-rpm_gauge.cpp.s:
-	$(MAKE) -f CMakeFiles/IC_GUI.dir/build.make CMakeFiles/IC_GUI.dir/rpm_gauge.cpp.s
-.PHONY : rpm_gauge.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -260,12 +260,12 @@ help:
 	@echo "... IC_GUI_autogen/mocs_compilation.o"
 	@echo "... IC_GUI_autogen/mocs_compilation.i"
 	@echo "... IC_GUI_autogen/mocs_compilation.s"
+	@echo "... battery_gauge.o"
+	@echo "... battery_gauge.i"
+	@echo "... battery_gauge.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... rpm_gauge.o"
-	@echo "... rpm_gauge.i"
-	@echo "... rpm_gauge.s"
 .PHONY : help
 
 

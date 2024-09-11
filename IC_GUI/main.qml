@@ -49,11 +49,11 @@ ApplicationWindow  {
     Text{
         id: timeDisplay
         text: Clock.currentTime
-        anchors.horizontalCenterOffset: -54
-        anchors.topMargin: 70
+        anchors.horizontalCenterOffset: 1
+        anchors.topMargin: 124
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
-        font.pixelSize: 30
+        font.pixelSize: 40
         color: "#00b890"
     }
 
@@ -62,9 +62,9 @@ ApplicationWindow  {
         onTimeChanged: timeDisplay.text = Clock.currentTime
     }
 
-    /*///////////////////////////////////////////////////////// RPM_component */
+    /*///////////////////////////////////////////////////////// battery_component */
     Rectangle {
-        id: rpmgauge
+        id: batterygauge
         x: 848
         y: 0
         width: 400
@@ -74,8 +74,8 @@ ApplicationWindow  {
         color: "#28282c"
 
         Speedometer {
-            id: rpm_speedometer
-            objectName: "RPM_Gauge"
+            id: battery_speedometer
+            objectName: "Battery_Gauge"
             anchors.horizontalCenter: parent.horizontalCenter
             //            anchors.bottom: parent.bottom
             //            anchors.bottomMargin: -10
@@ -86,7 +86,7 @@ ApplicationWindow  {
             alignAngle: alignAngle
             lowestRange: lowestRange
             highestRange: highestRange
-            speed: speed // rpm
+            battery: battery // rpm
             arcWidth: arcWidth
             outerColor: outerColor
             innerColor: innerColor
@@ -95,22 +95,22 @@ ApplicationWindow  {
         }
 
         Text {
-            id: rpm_speedometer_value
+            id: battery_speedometer_value
             anchors.centerIn: parent
             anchors.bottom: parent.bottom
             font.pixelSize: 55 // 30
             color: "white"
 
-            text: rpm_value
+            text: battery_value + "%"
             //text: Math.floor(rpm_speedometer.speed) // Math.floor(Math.random() * 101);
         }
 
         Text {
-            id: rpm_text
-            text: qsTr("RPM")
-            anchors.verticalCenterOffset: 92
+            id: battery_text
+            text: qsTr("Battery")
+            anchors.verticalCenterOffset: 116
             anchors.horizontalCenterOffset: 0
-            anchors.bottomMargin: -92
+            anchors.bottomMargin: -116
             font.pixelSize: 30
             color: "white"
             anchors.centerIn: parent
@@ -141,67 +141,6 @@ ApplicationWindow  {
             source: "ring.svg"
         }
     }
-
-
-    /*///////////////////////////////////////////////////////// battery_component */
-    property real battery_value: 0.5
-
-
-    Rectangle {
-        id: battery
-        color: "transparent"
-        anchors.verticalCenterOffset: -119
-        anchors.horizontalCenterOffset: 76
-        anchors.centerIn: parent
-        width: battery_img.width // 169
-        height: battery_img.height // 85
-
-        Rectangle {
-            id: battery_percentage
-            anchors.top: battery_img.top
-            anchors.topMargin: 8
-            //            anchors.left: battery_img.left
-            //            anchors.leftMargin: 4
-            x: 4
-            y: 0
-            width: (battery_value * (battery_img.width - 2 * 4)) // battery_value * battery_img.width
-            height: battery_img.height - 14
-            color: "#00b890"
-        }
-
-        Image {
-            id: battery_img
-            width : 80
-            height: 40
-            anchors.fill: parent
-            source: "battery.png"
-            fillMode: Image.PreserveAspectFit
-        }
-
-        Text {
-            id: battery_text
-            anchors.centerIn: parent
-            anchors.bottom: parent.bottom
-            font.pixelSize: 18 // 30
-            color: "white"
-            text: Math.floor(battery_value * 100) + "%" // Math.floor(Math.random() * 101);
-
-            anchors.verticalCenterOffset: 36
-            anchors.horizontalCenterOffset: 0
-            anchors.bottomMargin: -36
-        }
-    }
-
-    Timer {
-        id: test_battery_timer
-        interval: 1000
-        repeat: true
-        running: true
-        onTriggered: {
-            battery_value = Math.random();
-        }
-    }
-
 
     /*///////////////////////////////////////////////////////// runningRate_component */
     function timeformat(elapsedTime){

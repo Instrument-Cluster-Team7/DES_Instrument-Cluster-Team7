@@ -6,8 +6,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/build-IC_GUI-Desktop-Debug/IC_GUI_autogen/EWIEGA46WW/qrc_qml.cpp" "/home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/build-IC_GUI-Desktop-Debug/CMakeFiles/IC_GUI.dir/IC_GUI_autogen/EWIEGA46WW/qrc_qml.cpp.o"
   "/home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/build-IC_GUI-Desktop-Debug/IC_GUI_autogen/mocs_compilation.cpp" "/home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/build-IC_GUI-Desktop-Debug/CMakeFiles/IC_GUI.dir/IC_GUI_autogen/mocs_compilation.cpp.o"
+  "/home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/IC_GUI/battery_gauge.cpp" "/home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/build-IC_GUI-Desktop-Debug/CMakeFiles/IC_GUI.dir/battery_gauge.cpp.o"
   "/home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/IC_GUI/main.cpp" "/home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/build-IC_GUI-Desktop-Debug/CMakeFiles/IC_GUI.dir/main.cpp.o"
-  "/home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/IC_GUI/rpm_gauge.cpp" "/home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/build-IC_GUI-Desktop-Debug/CMakeFiles/IC_GUI.dir/rpm_gauge.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

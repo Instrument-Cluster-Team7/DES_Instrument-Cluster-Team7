@@ -9,12 +9,7 @@
 
 #include "Clock.h"
 #include "speedProvider.h"
-#include "rpm_gauge.h"
-#include "receiver.h"
-
-qreal calculateSpeed(qreal rpm, qreal tire_circumference){
-    return rpm * tire_circumference * 0.06;
-}
+#include "battery_gauge.h"
 
 int main(int argc, char *argv[])
 {
@@ -22,7 +17,7 @@ int main(int argc, char *argv[])
 
     QGuiApplication app(argc, argv);
 
-    qmlRegisterType<rpm_gauge>("com.DESInstrumentClusterTeam7.speedometer", 1, 0, "Speedometer");
+    qmlRegisterType<battery_gauge>("com.DESInstrumentClusterTeam7.speedometer", 1, 0, "Speedometer");
 
     QQmlApplicationEngine engine;
 
@@ -65,7 +60,7 @@ int main(int argc, char *argv[])
     }
 
     // find RPM speedometer object
-    QObject *speedometerObj = object->findChild<QObject*>("RPM_Gauge");
+    QObject *speedometerObj = object->findChild<QObject*>("Battery_Gauge");
     if (!speedometerObj) {
         qCritical() << "Speedometer object not found in QML!";
         return -1;
@@ -74,45 +69,34 @@ int main(int argc, char *argv[])
     // findChild : find QML object which is named 'speedoMeter'
 
     // casting to speedometer object
-    rpm_gauge *ptrSpeedometer = qobject_cast<rpm_gauge*>(speedometerObj);
+    battery_gauge *ptrSpeedometer = qobject_cast<battery_gauge*>(speedometerObj);
     if (!ptrSpeedometer) {
         qCritical() << "Failed to cast Speedometer object!";
         return -1;
     }
 
 
-    /*///////////////////////////////////////////////////////// test RPM gauge with random speed */
-    qreal tire_circumference = 0.214;
-    qreal gear_ratio = 2.0;
-    qreal speed = 0.0;
-    qreal rpm = 0.0;
-    Receiver rcv;
-
+    /*///////////////////////////////////////////////////////// test Battery gauge with random value */
+    qreal battery = 0.0;
 
     std::srand(std::time(nullptr));
     QTimer *timer_test_rpm = new QTimer(&app);
 
-    QPropertyAnimation animation(speedometerObj, "speed");
+    QPropertyAnimation animation(speedometerObj, "battery");
     animation.setDuration(1000);
     animation.setEasingCurve(QEasingCurve::OutCubic);
 
-    if (rcv.initialize() == Receiver::SUCCEDED){
-        QObject::connect(&rcv, &Receiver::speedReceived, [&](int rpm){
+    QObject::connect(timer_test_rpm, &QTimer::timeout, [&](){
+        battery = static_cast<qreal>(std::rand() % 101);
+        animation.setStartValue(speedometerObj->property("battery"));
+        animation.setEndValue(battery);
+        animation.start();
 
-            animation.setStartValue(speedometerObj->property("speed"));
-            animation.setEndValue(rpm);
-            animation.start();
+        engine.rootContext()->setContextProperty("battery_value", static_cast<int>(battery));
 
-            float speed_kmh = calculateSpeed(rpm, tire_circumference);
-            speedProvider.setSpeed(speed_kmh);
-            engine.rootContext()->setContextProperty("rpm_value", static_cast<int>(rpm));
-
-            qDebug() << "Random Speed: " << speed_kmh << " km/h, RPM: " << rpm;
-        });
-    }
-    else{
-        qDebug() << "CAN connection failed";
-    }
+        qDebug() << "Battery : " << battery;
+    });
+    timer_test_rpm->start(1000);
 
     return app.exec();
 }
