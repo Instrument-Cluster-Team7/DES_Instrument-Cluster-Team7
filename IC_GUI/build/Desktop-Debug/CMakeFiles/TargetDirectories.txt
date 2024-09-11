@@ -1,0 +1,5 @@
+/home/yeongyoo/DES_Instrument-Cluster-Team7/IC_GUI/build/Desktop-Debug/CMakeFiles/IC_GUI.dir
+/home/yeongyoo/DES_Instrument-Cluster-Team7/IC_GUI/build/Desktop-Debug/CMakeFiles/edit_cache.dir
+/home/yeongyoo/DES_Instrument-Cluster-Team7/IC_GUI/build/Desktop-Debug/CMakeFiles/rebuild_cache.dir
+/home/yeongyoo/DES_Instrument-Cluster-Team7/IC_GUI/build/Desktop-Debug/CMakeFiles/IC_GUI_autogen_timestamp_deps.dir
+/home/yeongyoo/DES_Instrument-Cluster-Team7/IC_GUI/build/Desktop-Debug/CMakeFiles/IC_GUI_autogen.dir

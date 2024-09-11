@@ -11,7 +11,6 @@ const int SPI_CS_PIN = 9;
 #define ENCODER 3 //light detecting pin, connect D0 with 3
 #define CIRCUMFERENCE 0.214 //enter in meter
 volatile unsigned int counter = 0;
-float rpm;
 
 void count(){
   counter++;
@@ -19,7 +18,7 @@ void count(){
 
 /* Union that can devide 4byte data */
 union DataUnion {
-  float speed_kmh;
+  float rpm;
   byte bytes[4];
 } data;
 
@@ -56,16 +55,13 @@ void loop()
   
     if (millis() - previousMillis >= 1000){
         rpm = (counter / 20.0) *60;
-        data.speed_kmh = rpm * CIRCUMFERENCE *0.06;
         counter = 0;
         previousMillis += 1000;
         
         Serial.print("RPM: ");
-        Serial.println(rpm);
-        Serial.print("Speed(km/h): ");
-        Serial.println(data.speed_kmh);
+        Serial.println(data.rpm);
 
-        if ( CAN.sendMsgBuf(0x00, 0, 8, data.bytes) == CAN_OK){
+        if ( CAN.sendMsgBuf(0x00, 0, 4, data.bytes) == CAN_OK){
           Serial.println("Succesfully sent!");
         }
         else{
