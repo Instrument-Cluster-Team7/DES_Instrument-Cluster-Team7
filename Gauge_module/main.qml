@@ -29,17 +29,17 @@ ApplicationWindow  {
         anchors.bottom: dial.bottom
         anchors.bottomMargin: dial.height / 2
         length: needleLength
-        angle: speedProvider.speedValue / 2//* 1.5  //speedValue / 2
+        angle: (Receiver.speedKmh + 240) * 100 //(Receiver.speedKmh - 240) * 10
 
         Connections{
-            target: speedProvider
-            onSpeedChanged: needle.angle = speedProvider.speedValue / 2//* 1.5
+            target: Receiver
+            onSpeedChanged: needle.angle = (Receiver.speedKmh + 240) * 100//(Receiver.speedKmh - 240) * 10
         }
     }
 
     Text {
         id: speedText
-        text: (speedProvider.speedValue + 240) / 2 + " km/h"
+        text: Receiver.speedKmh.toFixed(2)//(speedProvider.speedValue + 240) / 2 + " km/h"
         anchors.horizontalCenter: dial.horizontalCenter
         anchors.bottom: dial.bottom
         anchors.bottomMargin: dial.height * 0.2

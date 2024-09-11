@@ -19,6 +19,7 @@ class Receiver: public QThread
 {
 
     Q_OBJECT
+    Q_PROPERTY(float speedKmh READ getSpeed NOTIFY speedReceived)
 
 private:
     int socketCAN;
@@ -34,12 +35,15 @@ public:
     ~Receiver();
     Receiver(const Receiver& rcv);
     Receiver operator=(const Receiver& rcv);
+    float getSpeed() const {
+        return speed_data.speed_kmh;
+    }
 
     int initialize();
     void run();
 
 signals:
-    void speedReceived(int speed);
+    void speedReceived(float speedKmh);
 };
 
 #endif // RECEIVER_H

@@ -4,6 +4,7 @@
 #include <QCoreApplication>
 #include "Clock.h"
 #include "speedProvider.h"
+#include "receiver.h"
 
 int main(int argc, char *argv[])
 {
@@ -14,13 +15,17 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
 
     Clock clock;
-    SpeedProvider speedProvider;
+    //SpeedProvider speedProvider;
+    Receiver receiver;
+    receiver.initialize();
+    receiver.start();
 
-    speedProvider.setMinSpeed(-200);
-    speedProvider.setMaxSpeed(200);
+    //speedProvider.setMinSpeed(-200);
+    //speedProvider.setMaxSpeed(200);
 
     engine.rootContext()->setContextProperty("Clock", &clock);
-    engine.rootContext()->setContextProperty("speedProvider", &speedProvider);
+    //engine.rootContext()->setContextProperty("speedProvider", &speedProvider);
+    engine.rootContext()->setContextProperty("Receiver", &receiver);
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
