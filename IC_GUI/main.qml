@@ -21,9 +21,44 @@ ApplicationWindow  {
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: parent.left
         anchors.leftMargin: height * 0.2
+        z: 2
 
         property int dialSize: gauge.dial_Size
     }
+
+    Text{
+        id: timeDisplay
+        text: Clock.currentTime
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: parent.top
+        anchors.topMargin: parent.height * 0.2
+        font.pixelSize: 50
+        color: "#00b890"
+    }
+
+    Connections{
+        target: Clock
+        onTimeChanged: timeDisplay.text = Clock.currentTime
+    }
+
+    Image {
+        id: image
+        anchors.horizontalCenter: dial.horizontalCenter
+        anchors.verticalCenter: dial.verticalCenter
+        source: "Ellipse 1.svg"
+        fillMode: Image.PreserveAspectFit
+        z: 0
+    }
+
+    Image {
+        id: image1
+        anchors.horizontalCenter: dial.horizontalCenter
+        anchors.verticalCenter: dial.verticalCenter
+        width: 335
+        height: 325
+        source: "Ellipse 5.svg"
+        fillMode: Image.PreserveAspectFit
+    }//*/
 
     Needle{
         id: needle
@@ -42,24 +77,7 @@ ApplicationWindow  {
     SpeedText{
         id: speedText
         anchors.horizontalCenter: dial.horizontalCenter
-        anchors.bottom: dial.bottom
-        anchors.bottomMargin: dial.height * 0.2
-    }
-
-    Text{
-        id: timeDisplay
-        text: Clock.currentTime
-        anchors.horizontalCenterOffset: 1
-        anchors.topMargin: 124
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.top: parent.top
-        font.pixelSize: 40
-        color: "#00b890"
-    }
-
-    Connections{
-        target: Clock
-        onTimeChanged: timeDisplay.text = Clock.currentTime
+        anchors.verticalCenter: dial.verticalCenter
     }
 
     /*///////////////////////////////////////////////////////// battery_component */

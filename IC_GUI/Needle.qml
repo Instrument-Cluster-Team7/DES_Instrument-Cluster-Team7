@@ -1,4 +1,4 @@
-import QtQuick 2.12
+import QtQuick 2.0
 
 Item {
     id: needle_comp
@@ -13,7 +13,7 @@ Item {
         id: needle
         width: parent.width
         height: parent.height
-        color: "#00b890";
+        color: "red" //"#00b890";
         anchors.centerIn: parent
         transformOrigin: Item.Bottom
         rotation: angle
@@ -23,6 +23,11 @@ Item {
                 duration: 800
                 easing.type: Easing.InOutQuad
             }
+        }
+
+        gradient: Gradient{
+            GradientStop { position: 0.0; color: "red" }
+            GradientStop { position: 0.8; color: "black" }
         }
     }
 }
