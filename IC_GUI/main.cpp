@@ -10,6 +10,9 @@
 #include "Clock.h"
 #include "speedProvider.h"
 #include "battery_gauge.h"
+#include "get_battery.h"
+
+int i2c_fd;
 
 int main(int argc, char *argv[])
 {
@@ -20,6 +23,15 @@ int main(int argc, char *argv[])
     qmlRegisterType<battery_gauge>("com.DESInstrumentClusterTeam7.speedometer", 1, 0, "Speedometer");
 
     QQmlApplicationEngine engine;
+
+    i2c_fd = open(I2C_BUS, O_RDWR);
+    if (i2c_fd < 0) {
+        return -1;
+    }
+    if (ioctl(i2c_fd, I2C_SLAVE, INA219_ADDRESS) < 0) {
+        close(i2c_fd);
+        return -1;
+    }
 
     /*///////////////////////////////////////////////////////// set running rate */
     QElapsedTimer runTime;
@@ -78,6 +90,8 @@ int main(int argc, char *argv[])
 
     /*///////////////////////////////////////////////////////// test Battery gauge with random value */
     qreal battery = 0.0;
+    qreal previousBattery = 0.0;
+    const qreal b_threshold = 1.0;
 
     std::srand(std::time(nullptr));
     QTimer *timer_test_rpm = new QTimer(&app);
@@ -87,12 +101,20 @@ int main(int argc, char *argv[])
     animation.setEasingCurve(QEasingCurve::OutCubic);
 
     QObject::connect(timer_test_rpm, &QTimer::timeout, [&](){
-        battery = static_cast<qreal>(std::rand() % 101);
-        animation.setStartValue(speedometerObj->property("battery"));
-        animation.setEndValue(battery);
-        animation.start();
+//        battery = static_cast<qreal>(std::rand() % 101);
 
-        engine.rootContext()->setContextProperty("battery_value", static_cast<int>(battery));
+        battery = readVoltage(i2c_fd);
+        int batteryPercentage = calculateBatteryPercentage(battery);
+
+        if (std::fabs(batteryPercentage - previousBattery) >= b_threshold){
+
+            animation.setStartValue(speedometerObj->property("battery"));
+            animation.setEndValue(batteryPercentage); // battery
+            animation.start();
+            previousBattery = batteryPercentage;
+
+        }
+        engine.rootContext()->setContextProperty("battery_value", batteryPercentage); //static_cast<int>(battery)
 
         qDebug() << "Battery : " << battery;
     });

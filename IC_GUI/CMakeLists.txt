@@ -41,6 +41,8 @@ else()
 
       Clock.h
       speedProvider.h
+      get_battery.h
+      get_battery.cpp
     )
 endif()
 
