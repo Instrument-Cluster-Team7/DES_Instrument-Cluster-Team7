@@ -6,6 +6,7 @@
 #include <QQmlContext>
 #include <QCoreApplication>
 #include <QPropertyAnimation>
+#include <deque>
 
 #include "Clock.h"
 #include "speedProvider.h"
@@ -91,7 +92,10 @@ int main(int argc, char *argv[])
     /*///////////////////////////////////////////////////////// test Battery gauge with random value */
     qreal battery = 0.0;
     qreal previousBattery = 0.0;
-    const qreal b_threshold = 1.0;
+    const qreal b_threshold = 2.0; // 1.0
+
+    std::deque<qreal> batteryValues;
+    const int smoothWindowSize = 10; //5
 
     std::srand(std::time(nullptr));
     QTimer *timer_test_rpm = new QTimer(&app);
@@ -104,12 +108,21 @@ int main(int argc, char *argv[])
 //        battery = static_cast<qreal>(std::rand() % 101);
 
         battery = readVoltage(i2c_fd);
-        int batteryPercentage = calculateBatteryPercentage(battery);
+        batteryValues.push_back(battery);
 
+        if (batteryValues.size() > smoothWindowSize){
+            batteryValues.pop_front();
+        }
+
+        qreal batterySum = std::accumulate(batteryValues.begin(), batteryValues.end(), 0.0) / batteryValues.size();
+        int batteryPercentage = calculateBatteryPercentage(batterySum); // battery
+
+        qDebug() << "battery gap : " << batteryPercentage - previousBattery;
         if (std::fabs(batteryPercentage - previousBattery) >= b_threshold){
 
             animation.setStartValue(speedometerObj->property("battery"));
             animation.setEndValue(batteryPercentage); // battery
+//            animation.setDuration(1500);
             animation.start();
             previousBattery = batteryPercentage;
 
@@ -117,6 +130,7 @@ int main(int argc, char *argv[])
         engine.rootContext()->setContextProperty("battery_value", batteryPercentage); //static_cast<int>(battery)
 
         qDebug() << "Battery : " << battery;
+        qDebug() << "Battery percentage : " << batteryPercentage;
     });
     timer_test_rpm->start(1000);
 
