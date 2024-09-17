@@ -56,6 +56,10 @@ int Receiver::initialize(){
     return SUCCEDED;
 }
 
+float Receiver::EMA_filter(){
+    return SMOOTHING_FACTOR * speed_data.speed_kmh + (1 - SMOOTHING_FACTOR) * speed_prev;
+}
+
 void Receiver::run(){
     struct can_frame frame;
 
@@ -69,11 +73,12 @@ void Receiver::run(){
         }
 
         //receive data from union
-
+        speed_prev = speed_data.speed_kmh;
         for (int i = 0; i < 4; i++){
             speed_data.bytes[i] = frame.data[i];
         }
 
+        speed_data.speed_kmh = EMA_filter();
         emit speedReceived(speed_data.speed_kmh);
 
         // Step 5: Process received CAN message

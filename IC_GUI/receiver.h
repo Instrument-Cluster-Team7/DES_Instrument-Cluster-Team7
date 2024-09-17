@@ -27,9 +27,12 @@ private:
     struct sockaddr_can addr;
     DataUnion speed_data;
 
+    float speed_prev = 0;
+
 public:
     static const int SUCCEDED = 0;
     static const int FAILED = -1;
+    const float SMOOTHING_FACTOR = 0.9;
 
     Receiver(QObject *parent = nullptr);
     ~Receiver();
@@ -38,6 +41,7 @@ public:
     float getSpeed() const {
         return speed_data.speed_kmh;
     }
+    float EMA_filter();
 
     int initialize();
     void run();
