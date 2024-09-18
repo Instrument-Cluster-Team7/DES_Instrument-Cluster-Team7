@@ -1,4 +1,0 @@
-/home/Team7/DES_Instrument-Cluster-Team7/IC_GUI/build/CMakeFiles/rebuild_cache.dir
-/home/Team7/DES_Instrument-Cluster-Team7/IC_GUI/build/CMakeFiles/edit_cache.dir
-/home/Team7/DES_Instrument-Cluster-Team7/IC_GUI/build/CMakeFiles/IC_GUI.dir
-/home/Team7/DES_Instrument-Cluster-Team7/IC_GUI/build/CMakeFiles/IC_GUI_autogen.dir
