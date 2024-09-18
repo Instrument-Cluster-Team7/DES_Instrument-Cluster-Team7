@@ -56,8 +56,8 @@ void loop()
     static uint32_t previousMillis;
   
     if (millis() - previousMillis >= 1000 *PERIOD){
-        rpm = (counter / 20.0) * 60 * PERIOD;
-        data.speed_kmh = rpm * CIRCUMFERENCE *0.06;
+        rpm = (counter / 20.0) * 60 / PERIOD;
+        data.speed_kmh = rpm * CIRCUMFERENCE * 100 / 60;
         
         counter = 0;
         previousMillis += 1000 * PERIOD;
