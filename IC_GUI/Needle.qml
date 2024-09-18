@@ -20,7 +20,7 @@ Item {
 
         Behavior on rotation{
             NumberAnimation{
-                duration: 800
+                duration: 50
                 easing.type: Easing.InOutQuad
             }
         }

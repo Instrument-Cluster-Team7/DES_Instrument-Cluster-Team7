@@ -11,6 +11,8 @@ ApplicationWindow  {
     height: 400
     color: "#28282c"
     title: qsTr("Instrument Cluster")
+    flags: Qt.FramelessWindowHint
+    visibility: Window.FullScreen
 
     property int dial_Size: height * 0.9
     property int needleLength: height * 0.3
@@ -66,11 +68,11 @@ ApplicationWindow  {
         anchors.bottom: dial.bottom
         anchors.bottomMargin: dial.height / 2
         length: needleLength
-        angle: speedProvider.speedValue / 2//* 1.5  //speedValue / 2
+        angle: (Receiver.speedKmh + 210)
 
         Connections{
-            target: speedProvider
-            onSpeedChanged: needle.angle = speedProvider.speedValue / 2//* 1.5
+            target: Receiver
+            onSpeedChanged: needle.angle = (Receiver.speedKmh + 210)
         }
     }
 

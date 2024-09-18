@@ -12,6 +12,7 @@
 #include "speedProvider.h"
 #include "battery_gauge.h"
 #include "get_battery.h"
+#include "receiver.h"
 
 int i2c_fd;
 
@@ -47,13 +48,19 @@ int main(int argc, char *argv[])
 
     /*///////////////////////////////////////////////////////// clock */
     Clock clock;
-    SpeedProvider speedProvider;
+    Receiver receiver;
 
-    speedProvider.setMinSpeed(-200);
-    speedProvider.setMaxSpeed(200);
+    receiver.initialize();
+    receiver.start();
+
+    //SpeedProvider speedProvider;
+
+    //speedProvider.setMinSpeed(-200);
+    //speedProvider.setMaxSpeed(200);
 
     engine.rootContext()->setContextProperty("Clock", &clock);
-    engine.rootContext()->setContextProperty("speedProvider", &speedProvider);
+    engine.rootContext()->setContextProperty("Receiver", &receiver);
+    //engine.rootContext()->setContextProperty("speedProvider", &speedProvider);
 
     /*///////////////////////////////////////////////////////// connect & load engine */
     const QUrl url(QStringLiteral("qrc:/main.qml"));

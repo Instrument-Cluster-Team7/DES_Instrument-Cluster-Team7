@@ -69,11 +69,22 @@ void Receiver::run(){
         }
 
         //receive data from union
-
+        speed_prev = speed_data.speed_kmh;
         for (int i = 0; i < 4; i++){
             speed_data.bytes[i] = frame.data[i];
         }
 
-        emit speedReceived(speed_data.rpm);
+        qDebug() << "before EMA:" << speed_data.speed_kmh;
+        speed_data.speed_kmh = EMA();
+        qDebug() << "after EMA:" << speed_data.speed_kmh;
+        emit speedReceived(speed_data.speed_kmh);
+
+        // Step 5: Process received CAN message
+        qDebug() << "Received CAN ID: " << frame.can_id << '\n';
+        qDebug() << "Data: " << speed_data.speed_kmh << '\n';
     }
+}
+
+float Receiver::EMA(){
+    return SMOOTHING_FACTOR * speed_data.speed_kmh + (1 - SMOOTHING_FACTOR) * speed_prev;
 }

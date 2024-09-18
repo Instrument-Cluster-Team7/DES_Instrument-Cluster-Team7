@@ -7,7 +7,7 @@ Item {
 
     Text{
         id: speedText
-        text: Math.round((currentSpeed + 240) / 2)
+        text: Receiver.speedKmh.toFixed(0)
         font.pixelSize: 35
         color: "white"
         anchors.bottom: parent.verticalCenter
@@ -26,16 +26,16 @@ Item {
     }
 
     Connections{
-        target: speedProvider
+        target: Receiver
         onSpeedChanged: {
-            speedTextComponent.targetSpeed = speedProvider.speedValue
+            speedTextComponent.targetSpeed = Receiver.speedKmh
             speedAnimation.start()
         }
     }
 
     Text{
         id: speed_scale
-        text: "km/h"
+        text: "cm/s"
         font.pixelSize: 25
         color: "white"
         anchors.horizontalCenter: parent.horizontalCenter

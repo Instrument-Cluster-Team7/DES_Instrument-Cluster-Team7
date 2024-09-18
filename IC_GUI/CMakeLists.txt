@@ -40,6 +40,8 @@ else()
       battery_gauge.h
 
       Clock.h
+      receiver.h
+      receiver.cpp
       speedProvider.h
       get_battery.h
       get_battery.cpp
