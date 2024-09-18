@@ -45,21 +45,21 @@ Window {
         anchors.rightMargin: 32
         color: "#28282c"
 
-//        Rectangle {
-//            id: needle
-//            width: 5
-//            height: 90
-//            color: "#a2f2d9"
-//            anchors.horizontalCenter: parent.horizontalCenter
-//            anchors.bottom: parent.bottom
-//            anchors.bottomMargin: parent.height / 2
-//            transformOrigin: Item.Bottom
+        //        Rectangle {
+        //            id: needle
+        //            width: 5
+        //            height: 90
+        //            color: "#a2f2d9"
+        //            anchors.horizontalCenter: parent.horizontalCenter
+        //            anchors.bottom: parent.bottom
+        //            anchors.bottomMargin: parent.height / 2
+        //            transformOrigin: Item.Bottom
 
-//            rotation: rpm_speedometer.startAngle - 40 + ((rpm_speedometer.speed - rpm_speedometer.lowestRange) * rpm_speedometer.alignAngle / (rpm_speedometer.highestRange - rpm_speedometer.lowestRange))
-//            // rotation: ((rpm_speedometer.speed - rpm_speedometer.lowestRange)/(rpm_speedometer.highestRange - rpm_speedometer.lowestRange)) * (0 - rpm_speedometer.alignAngle)
-//            // rotation: ((rpm_speedometer.speed - rpm_speedometer.lowestRange) / (rpm_speedometer.highestRange - rpm_speedometer.lowestRange)) * rpm_speedometer.alignAngle - rpm_speedometer.startAngle
-//            // valueToAngle = ((m_Speed - m_LowestRange)/(m_HighestRange - m_LowestRange)) * spanAngle;
-//        }
+        //            rotation: rpm_speedometer.startAngle - 40 + ((rpm_speedometer.speed - rpm_speedometer.lowestRange) * rpm_speedometer.alignAngle / (rpm_speedometer.highestRange - rpm_speedometer.lowestRange))
+        //            // rotation: ((rpm_speedometer.speed - rpm_speedometer.lowestRange)/(rpm_speedometer.highestRange - rpm_speedometer.lowestRange)) * (0 - rpm_speedometer.alignAngle)
+        //            // rotation: ((rpm_speedometer.speed - rpm_speedometer.lowestRange) / (rpm_speedometer.highestRange - rpm_speedometer.lowestRange)) * rpm_speedometer.alignAngle - rpm_speedometer.startAngle
+        //            // valueToAngle = ((m_Speed - m_LowestRange)/(m_HighestRange - m_LowestRange)) * spanAngle;
+        //        }
 
         Speedometer {
             id: rpm_speedometer
@@ -89,7 +89,8 @@ Window {
             font.pixelSize: 55 // 30
             color: "white"
 
-            text: Math.floor(rpm_speedometer.speed) // Math.floor(Math.random() * 101);
+            text: rpm_value
+            //text: Math.floor(rpm_speedometer.speed) // Math.floor(Math.random() * 101);
         }
         Text {
             id: rpm_text
@@ -103,16 +104,16 @@ Window {
             anchors.bottom: parent.bottom
         }
 
-        Image {
-            id: out_circleline
-            x: 22
-            y: 19
-            width: 360
-            height: 360
-            anchors.centerIn: parent
-            source: "Ellipse 1.svg"
-            fillMode: Image.PreserveAspectFit
-        }
+        //        Image {
+        //            id: out_circleline
+        //            x: 22
+        //            y: 19
+        //            width: 360
+        //            height: 360
+        //            anchors.centerIn: parent
+        //            source: "Ellipse 1.svg"
+        //            fillMode: Image.PreserveAspectFit
+        //        }
 
         Image {
             id: inner_circleline
@@ -125,6 +126,17 @@ Window {
             anchors.centerIn: parent
             fillMode: Image.PreserveAspectFit
             source: "ring.svg"
+        }
+
+        Image {
+            id: out_circleline
+            x: 22
+            y: 19
+            width: 360
+            height: 360
+            anchors.centerIn: parent
+            fillMode: Image.PreserveAspectFit
+            source: "out_ring.png"
         }
     }
 
@@ -168,7 +180,7 @@ Window {
             anchors.bottom: parent.bottom
             font.pixelSize: 18 // 30
             color: "white"
-            text: Math.floor(battery_value * 101) + "%" // Math.floor(Math.random() * 101);
+            text: Math.floor(battery_value * 100) + "%" // Math.floor(Math.random() * 101);
 
             anchors.verticalCenterOffset: 36
             anchors.horizontalCenterOffset: 0
@@ -200,10 +212,73 @@ Window {
     Text {
         id: running_rate
         text: "Running Rate: " + timeformat(elapsedTime)
-        anchors.verticalCenterOffset: 158
+        anchors.verticalCenterOffset: 147
         anchors.horizontalCenterOffset: 0 // "Running Rate: " + elapsedTime + " seconds"
         anchors.centerIn: parent
         font.pixelSize: 13
         color: "white"
     }
+
+    /*///////////////////////////////////////////////////////// background_component */
+    // background version 1
+//        Image {
+//        id: left_load
+//        x: 486
+//        y: 134
+//        width: 135
+//        height: 266
+//        source: "Vector 1.svg"
+//        fillMode: Image.PreserveAspectFit
+//    }
+
+//    Image {
+//        id: right_load
+//        x: 665
+//        y: 134
+//        width: 135
+//        height: 266
+//        source: "Vector 2.svg"
+//        fillMode: Image.PreserveAspectFit
+//    }
+
+//    Image {
+//        id: car_png
+//        x: 543
+//        y: 265
+//        width: 198
+//        height: 91
+//        fillMode: Image.PreserveAspectFit
+//        source: "pngwing.com(2).png"
+//    }
+
+    // background version 2
+    Image {
+        id: background
+        x: 430 //430
+        y: 123 //158
+        fillMode: Image.PreserveAspectFit
+        source: "background_g.png"
+
+        Image {
+            id: highlight
+            x: 0
+            y: 0
+            fillMode: Image.PreserveAspectFit
+            source: "car-highlights.png"
+        }
+    }
+
+    Image {
+        id: bar
+        x: 289
+        y: 0
+        width: 702
+        height: 91
+        fillMode: Image.PreserveAspectFit
+        source: "Vector 70.svg"
+    }
+
+
 }
+
+

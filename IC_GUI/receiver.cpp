@@ -86,6 +86,3 @@ void Receiver::run(){
         qDebug() << "Data: " << speed_data.speed_kmh << '\n';
     }
 }
-
-
-

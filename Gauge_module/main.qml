@@ -20,7 +20,7 @@ ApplicationWindow  {
         anchors.left: parent.left
         anchors.leftMargin: height * 0.2
 
-        dialSize: gauge.dial_Size
+        property int dialSize: gauge.dial_Size
     }
 
     Needle{
@@ -37,6 +37,14 @@ ApplicationWindow  {
         }
     }
 
+    SpeedText{
+        id: speedText
+        anchors.horizontalCenter: dial.horizontalCenter
+        anchors.bottom: dial.bottom
+        anchors.bottomMargin: dial.height * 0.2
+    }
+
+/*
     Text {
         id: speedText
         text: Receiver.speedKmh.toFixed(2)//(speedProvider.speedValue + 240) / 2 + " km/h"
@@ -47,7 +55,7 @@ ApplicationWindow  {
         font.bold: true
         font.pixelSize: 30
     }
-
+*/
     Text{
         id: timeDisplay
         text: Clock.currentTime

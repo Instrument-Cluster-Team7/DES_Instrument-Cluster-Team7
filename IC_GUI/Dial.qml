@@ -13,6 +13,16 @@ Item {
         width = dialSize
         height = dialSize
     }
+/*
+    Rectangle{
+        width: bg_dial.dialSize / 4
+        height: bg_dial.dialSize / 4
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.verticalCenter: parent.verticalCenter
+        //anchors.fill: parent
+        radius: parent.dialSize / 4
+        color: "#a2f2d9"
+    }//*/
 
     Canvas {
         anchors.fill: parent

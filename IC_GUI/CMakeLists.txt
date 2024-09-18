@@ -43,6 +43,8 @@ else()
       speedProvider.h
       receiver.h
       receiver.cpp
+      get_battery.h
+      get_battery.cpp
     )
 endif()
 
