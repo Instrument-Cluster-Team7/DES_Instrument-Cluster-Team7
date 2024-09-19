@@ -14,5 +14,6 @@
         <file>out_ring.png</file>
         <file>Vector 70.svg</file>
         <file>back_ground_bright.png</file>
+        <file>WarningDialog.qml</file>
     </qresource>
 </RCC>

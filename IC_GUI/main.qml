@@ -1,8 +1,9 @@
 import QtQuick 2.12
 import QtQuick.Window 2.12
 import com.DESInstrumentClusterTeam7.speedometer 1.0
-import QtQuick.Controls 1.2
+import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.1
+import CAN.Receiver 1.0
 
 ApplicationWindow  {
     id: gauge
@@ -78,6 +79,25 @@ ApplicationWindow  {
         id: speedText
         anchors.horizontalCenter: dial.horizontalCenter
         anchors.verticalCenter: dial.verticalCenter
+    }
+
+    Receiver{
+        id:canReceiver
+        onCanConnected: {
+            if(!canStatus){
+                warningDialog.open()
+                warningDialog.messageText = "Disconnected CAN data"
+            }
+            else{
+                warningDialog.close()
+            }
+        }
+        Component.onCompleted: receiver.initialize()
+    }
+
+
+    WarningDialog{
+        id: warningDialog
     }
 
     /*///////////////////////////////////////////////////////// battery_component */

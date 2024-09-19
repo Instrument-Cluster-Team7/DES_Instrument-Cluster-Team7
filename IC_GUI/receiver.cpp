@@ -60,13 +60,22 @@ void Receiver::run(){
     struct can_frame frame;
 
     qDebug() << "listening for CAN messages on can0...\n";
+    emit canConnected(canStatus);
 
     while (true) {
+        qDebug() << "Loop Start\n";
         int nbytes = read(socketCAN, &frame, sizeof(struct can_frame));
         if (nbytes < 0) {
             qDebug() << "Error reading CAN frame!\n";
+            canStatus = false;
+            emit canConnected(canStatus);
+            qDebug() << "Connection: " << canStatus << '\n';
             return;
         }
+
+        canStatus = true;
+        qDebug() << "Connection: " << canStatus << '\n';
+        emit canConnected(canStatus);
 
         //receive data from union
 

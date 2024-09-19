@@ -19,6 +19,7 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     qmlRegisterType<battery_gauge>("com.DESInstrumentClusterTeam7.speedometer", 1, 0, "Speedometer");
+    qmlRegisterType<Receiver>("CAN.Receiver", 1, 0, "Receiver");
 
     QQmlApplicationEngine engine;
 
@@ -42,6 +43,7 @@ int main(int argc, char *argv[])
 
     engine.rootContext()->setContextProperty("Clock", &clock);
     engine.rootContext()->setContextProperty("Receiver", &receiver);
+
 
     /*///////////////////////////////////////////////////////// connect & load engine */
     const QUrl url(QStringLiteral("qrc:/main.qml"));
