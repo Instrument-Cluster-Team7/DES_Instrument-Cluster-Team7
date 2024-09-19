@@ -14,5 +14,9 @@
         <file>out_ring.png</file>
         <file>Vector 70.svg</file>
         <file>back_ground_bright.png</file>
+        <file>iconizer-headphone-icon.svg</file>
+        <file>iconizer-gas-station-icon.svg</file>
+        <file>iconizer-day-cloudy-icon.svg</file>
+        <file>iconizer-address-location-icon.svg</file>
     </qresource>
 </RCC>

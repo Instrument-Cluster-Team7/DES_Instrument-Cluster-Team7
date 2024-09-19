@@ -33,8 +33,9 @@ ApplicationWindow  {
         text: Clock.currentTime
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
-        anchors.topMargin: parent.height * 0.2
         font.pixelSize: 50
+        anchors.horizontalCenterOffset: 0
+        anchors.topMargin: 60
         color: "#00b890"
     }
 
@@ -68,11 +69,11 @@ ApplicationWindow  {
         anchors.bottom: dial.bottom
         anchors.bottomMargin: dial.height / 2
         length: needleLength
-        angle: (Receiver.speedKmh + 210)
+        angle: (Receiver.speedKmh * 2.5 + 210)
 
         Connections{
             target: Receiver
-            onSpeedChanged: needle.angle = (Receiver.speedKmh + 210)
+            onSpeedChanged: needle.angle = (Receiver.speedKmh * 2.5 + 210)
         }
     }
 
@@ -231,18 +232,80 @@ ApplicationWindow  {
         height: 79
         fillMode: Image.PreserveAspectFit
         source: "Vector 70.svg"
+
+        Image {
+            id: iconizerheadphoneicon
+            x: 247
+            y: 133
+            width: 25
+            height: 25
+            source: "iconizer-headphone-icon.svg"
+            asynchronous: false
+            autoTransform: false
+            mipmap: false
+            mirror: false
+            sourceSize.height: 120
+            sourceSize.width: 120
+            fillMode: Image.PreserveAspectFit
+        }
+
+        Image {
+            id: iconizerdaycloudyicon
+            x: 351
+            y: 131
+            width: 30
+            height: 30
+            source: "iconizer-day-cloudy-icon.svg"
+            asynchronous: false
+            autoTransform: false
+            mipmap: false
+            mirror: false
+            fillMode: Image.PreserveAspectFit
+        }
+
+        Image {
+            id: iconizergasstationicon
+            x: 193
+            y: 133
+            width: 25
+            height: 25
+            source: "iconizer-gas-station-icon.svg"
+            asynchronous: false
+            autoTransform: false
+            mipmap: false
+            mirror: false
+            sourceSize.height: 120
+            sourceSize.width: 120
+            fillMode: Image.PreserveAspectFit
+        }
+
+        Image {
+            id: iconizeraddresslocationicon
+            x: 300
+            y: 134
+            width: 25
+            height: 25
+            source: "iconizer-address-location-icon.svg"
+            asynchronous: false
+            autoTransform: false
+            mipmap: false
+            mirror: false
+            sourceSize.height: 120
+            sourceSize.width: 120
+            fillMode: Image.PreserveAspectFit
+        }
     }
 
-//    Image {
-//        id: bottom_bar
-//        x: 346
-//        y: 400
-//        width: 588
-//        height: 84
-//        transform: Scale {
-//            yScale: -1
-//        }
-//        fillMode: Image.PreserveAspectFit
-//        source: "Vector 70.svg"
-//    }
+    //    Image {
+    //        id: bottom_bar
+    //        x: 346
+    //        y: 400
+    //        width: 588
+    //        height: 84
+    //        transform: Scale {
+    //            yScale: -1
+    //        }
+    //        fillMode: Image.PreserveAspectFit
+    //        source: "Vector 70.svg"
+    //    }
 }
