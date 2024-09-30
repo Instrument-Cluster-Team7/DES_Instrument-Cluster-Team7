@@ -1,0 +1,21 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>battery.png</file>
+        <file>Ellipse 1.svg</file>
+        <file>Subtract.svg</file>
+        <file>ring.svg</file>
+        <file>Vector 70.svg</file>
+        <file>Vector 2.svg</file>
+        <file>Vector 1.svg</file>
+        <file>bg-mask.png</file>
+        <file>car_frame.png</file>
+        <file>volkswagen_car.png</file>
+        <file>out_ring.png</file>
+        <file>background_g.png</file>
+        <file>highlight_g.png</file>
+        <file>bright_highlight.png</file>
+        <file>car-highlights.png</file>
+        <file>pngwing.com(2).png</file>
+    </qresource>
+</RCC>

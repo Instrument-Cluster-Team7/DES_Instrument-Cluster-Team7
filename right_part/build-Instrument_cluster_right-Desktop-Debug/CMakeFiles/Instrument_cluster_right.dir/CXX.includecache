@@ -1,0 +1,10 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/llj/catkin_ws/src/DES_Instrument-Cluster-Team7/right_part/build-Instrument_cluster_right-Desktop-Debug/Instrument_cluster_right_autogen/EWIEGA46WW/qrc_qml.cpp
+
