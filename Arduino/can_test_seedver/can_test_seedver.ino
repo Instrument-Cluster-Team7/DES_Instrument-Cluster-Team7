@@ -10,8 +10,10 @@ const int SPI_CS_PIN = 9;
 //set the variables of speed sensor
 #define ENCODER 3 //light detecting pin, connect D0 with 3
 #define CIRCUMFERENCE 0.214 //enter in meter
+#define PERIOD 0.1
+
 volatile unsigned int counter = 0;
-float rpm;
+double rpm;
 
 void count(){
   counter++;
@@ -46,7 +48,6 @@ void setup()
     //interrupt to the PIN2, when rising edge count worksavrdude: ser_open(): can't open device "/dev/ttyACM0": No such file or directory
     int interrupt = (ENCODER == 2) ? 0 : 1;
     attachInterrupt(interrupt, count, RISING);
-
 }
 
 
@@ -54,18 +55,17 @@ void loop()
 {
     static uint32_t previousMillis;
   
-    if (millis() - previousMillis >= 1000){
-        rpm = (counter / 20.0) *60;
-        data.speed_kmh = rpm * CIRCUMFERENCE *0.06;
+    if (millis() - previousMillis >= 1000 *PERIOD){
+        rpm = (counter / 20.0) * 60 / PERIOD;
+        data.speed_kmh = rpm * CIRCUMFERENCE * 100 / 60;
+        
         counter = 0;
-        previousMillis += 1000;
+        previousMillis += 1000 * PERIOD;
         
         Serial.print("RPM: ");
-        Serial.println(rpm);
-        Serial.print("Speed(km/h): ");
         Serial.println(data.speed_kmh);
 
-        if ( CAN.sendMsgBuf(0x00, 0, 8, data.bytes) == CAN_OK){
+        if ( CAN.sendMsgBuf(0x00, 0, 4, data.bytes) == CAN_OK){
           Serial.println("Succesfully sent!");
         }
         else{
