@@ -1,167 +1,249 @@
-# **DES Project - Instrument Cluster**
+# DES Instrument Cluster Team7
 
-- [**DES Project - Instrument Cluster**](#des-project---instrument-cluster)
-  - [Introduction](#introduction)
-  - [Background Information](#background-information)
-  - [Project Goals and Objectives](#project-goals-and-objectives)
-  - [Technical Requirements](#technical-requirements)
-  - [Software Design](#software-design)
-  - [Implementation](#implementation)
-  - [Project Timeline](#project-timeline)
-  - [Collaboration and Teamwork](#collaboration-and-teamwork)
-  - [Results](#results)
-  - [Submission](#submission)
-  - [Evaluation](#evaluation)
-  - [References](#references)
+## Result Video
+<video controls src="https://private-user-images.githubusercontent.com/67433199/381587579-0524db46-d54a-4b5f-ae91-c57c40d0804c.mp4?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzAyOTgxOTcsIm5iZiI6MTczMDI5Nzg5NywicGF0aCI6Ii82NzQzMzE5OS8zODE1ODc1NzktMDUyNGRiNDYtZDU0YS00YjVmLWFlOTEtYzU3YzQwZDA4MDRjLm1wND9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDEwMzAlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQxMDMwVDE0MTgxN1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWY4OWJkYmYwYTNkNTNmNzlhMDdjYTQwZDljZTExZTU3ZDU3YWU3MmQ1MDlhNTZlZGNkZjcyZjg1NjcxYTUwNDAmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.QA4t4eSsUbVcEGkMwZTkGuq1OuwI9YamsV-Cwkd7V-A" title="success screen"></video>
+
+<video controls src="https://private-user-images.githubusercontent.com/67433199/381587149-f11bfdf7-cd6d-470e-a7b9-b82a95cdbfc4.mp4?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzAyOTgyMzIsIm5iZiI6MTczMDI5NzkzMiwicGF0aCI6Ii82NzQzMzE5OS8zODE1ODcxNDktZjExYmZkZjctY2Q2ZC00NzBlLWE3YjktYjgyYTk1Y2RiZmM0Lm1wND9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDEwMzAlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQxMDMwVDE0MTg1MlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTQ3MzIxZWExYjg0NmY3YTUwMGE3ZjAxOGNhMDA5NGQ5MDAxZTJlYThkZGNiOGUwZGViOTdjYmMxOWQ4M2YzZDQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.BN6e-IaKjj5CN5ihs-mVtHdztvnQmcvMoxfKuhhKt_E
+" title="success shown"></video>
+
 
 ## Introduction
 
-The PiRacer instrument cluster Qt application project is aimed at creating a real-time speedometer for a PiRacer car. The application will run on a Raspberry Pi and receive speed data from a speed sensor via the in-vehicle communication using Controller Area Network (CAN) protocol. This project will provide an opportunity for students to gain practical experience in software engineering, specifically in the areas of embedded systems, software architecture, and communication protocols. The project will also allow students to gain knowledge of the GUI frameworks (eg. Qt), that are widely used in the automotive industry for developing many embedded applications. The successful completion of this project will demonstrate the students' ability to design and implement a real-world software solution, and their ability to effectively communicate their results.  
-</br>
+The PiRacer instrument cluster Qt application project is aimed at creating a real-time speedometer for a PiRacer car. The speedometer GUI of PiRacer car displays real-time speed data from a speed sensor via CAN bus, and it shows the battery level of PiRacer via I2C bus between PiRacer and Raspberry Pi.
 
+---
 
-## Background Information
+## Structure
 
-This section would provide background information on the technologies and tools used in the project, including the Raspberry Pi, in-vehicle communication using CAN (Controller Area Network) protocol and Qt framework.
+- **Receiving speed value by CAN protocol:** Arduino sends the speed value (km/h, float type) gained by speed sensor using the CAN protocol, and Raspberry Pi receives it and print on GUI.
+- **Receiving given battery by I2C bus:** The PiRacer provides various value to the Raspberry Pi by I2C communication: voltage, current, power, steering, etc. After receiving the speed data by I2C bus, Raspberry Pi calculates the remained battery percentage.
+- **GUI:** the GUI on the display is designed by QT Quick Framework, which includes the declarative scripting language QML and data processing library written and processed by C++.
+- **Docker Container:** All code in the Raspberry Pi is wrapped in the Docker container, to manage the code designed from the other environment to the Raspberry Pi.
 
-The Raspberry Pi is a small, low-cost computer that is commonly used for hobbyist and educational projects. It provides a versatile platform for developing a wide range of applications, including those in the automotive industry. The Qt framework is a popular cross-platform application development framework that is widely used in the automotive industry for developing embedded applications, such as instrument clusters and infotainment systems. The CAN protocol is a communication standard that is widely used in the automotive industry for interconnecting different ECUs (Electronic Control Units) in a vehicle.
-</br>
+---
 
+## Code explanation - Arduino
 
-## Project Goals and Objectives
+This code in the Arduino UNO reads data from a speed sensor, calculates speed, and sends the speed value over a CAN bus using the MCP2515 CAN bus module. Here's a very short summary:
 
-The main goal of the PiRacer Instrument Cluster Qt Application project is to create a functioning instrument cluster for a PiRacer car that displays real-time speed data from a speed sensor via CAN bus.
+1. **Interrupt-based Speed Sensing**: The code uses an interrupt to increment a counter every time a revolution is detected by the sensor. The interrupt occurs whenever slot in the rotor is detected. When interrupt is detected 20 times, it indicates that the wheel took a turn once.
+2. **Speed Calculation**: Every second, the speed (cm/s) is calculated by RPM, which is gained the number of instrrupt occured per second. Suppose the interrupts per period(p) as n. Here is formula: 
+    
+    $$
+    RPM=\frac{60n}{20P}
+    v(cm/s) = \frac{RPM * 2\pi r * 100}{60}
+    $$
+    
+3. **CAN Bus Communication**: The calculated RPM is sent over the CAN bus in 4 bytes using the MCP2515 module. The union is used to send and receive the float type variable as a form of 4-byte data in CAN module.
 
-The following are the specific objectives of the project:
+---
 
-1. To design and implement a Qt-based graphical user interface (GUI) for the instrument cluster.
-2. To integrate an arduino based speed sensor system with the Raspberry Pi using the CAN bus protocol.
-3. To display real-time speed data on the instrument cluster GUI.
-4. To test the functionality of the instrument cluster using realistic driving scenarios.
-5. To document the project in a comprehensive manner, including a detailed explanation of the system architecture, software design, implementation, results, and conclusions.
-6. BONUS Part:
-   1. To display battery level of PiRacer on Instrument Cluster.
-</br>
+## Code explanation - Raspberry Pi
 
+This project is divided according to modules. There is a module that receives CAN data, a module that reads battery data, and a module that implements a GUI. The main file integrates and manages all modules.
 
-## Technical Requirements
+### CAN Receiver(receiver.h, receiver.cpp)
 
-1. Raspberry Pi: The Raspberry Pi is a small, low-cost, single-board computer that is ideal for developing and testing embedded applications. A Raspberry Pi 3 Model B or later is recommended for this project, as it provides sufficient processing power and memory for running the instrument cluster application and receiving data from the speed sensor via CAN.
-2. Qt (Open Source version): Qt Creator is a powerful, cross-platform integrated development environment (IDE) for developing applications with the Qt framework. The Qt libraries for Raspberry Pi include all of the necessary components for building Qt applications for the Raspberry Pi.
-3. CAN bus interface: A CAN bus interface is required for connecting the Raspberry Pi to the vehicle's CAN bus and receiving speed data from the speed sensor. Suitable CAN bus interfaces for the Raspberry Pi include the MCP2515 and the TJA1050.
-4. Speed sensor: A speed sensor capable of transmitting speed data via CAN is required for this project. The type of speed sensor required will depend on the vehicle being used for testing.
-5. OBD-II cable: An OBD-II cable is required for connecting the Raspberry Pi and the speed sensor to the vehicle's CAN bus. This cable provides a convenient and reliable way to tap into the vehicle's CAN bus and receive data from the speed sensor.
-6. Voltage regulator: A 12V to 5V voltage regulator is required for powering the Raspberry Pi from the vehicle's electrical system. The voltage regulator ensures that the Raspberry Pi receives a stable, regulated power supply, even when the vehicle's electrical system voltage fluctuates.
-7. Display: A display is required for the instrument cluster application. Suitable displays include LCD and OLED displays, and the size and resolution of the display will depend on the specific requirements of the instrument cluster application.
-8. Mounting hardware: A suitable method of mounting the display and Raspberry Pi in the vehicle is required. This may involve mounting brackets, enclosures, or other hardware, depending on the specific requirements of the instrument cluster application.
-9. Vehicle for testing: Access to a PiRacer for testing the instrument cluster application is required. The PiRacer should have a CAN bus system and should be compatible with the speed sensor and other hardware components.
+It receive the 4 bytes data from the CAN bus of MCP2515 module.  The union is used to receive the 4-byte data in CAN message as a form of float type. Whenever data is received, signal connected to the GUI is emitted. 
 
-The students will be responsible for sourcing all of the required hardware components and ensuring that the hardware is compatible with the Raspberry Pi and the CAN bus interface. They will also be responsible for installing and configuring the operating system, the Qt framework, and any necessary drivers or libraries. The students will need to write and test the instrument cluster speedometer application, including the user interface, data processing, and CAN communication code. They will need to integrate the application with the hardware components and test the instrument cluster in a PiRacer. Finally, the students will be expected to document their work and demonstrate the instrument cluster application in a final presentation. This project delivers a solid understanding of software development and embedded systems, as well as the ability to work effectively in a team and to solve complex technical problems.  
-</br>
+The received speed data is smoothed by the EMA(Exponential Moving Average) filter with smoothing factor α=0.3.
 
+$$
+v_{n} = \alpha u + (1- \alpha)v_{n-1}
+$$
 
-## Software Design
+### Battery Provider
 
-The software design of the PiRacer instrument cluster application is based on the Qt framework, which is a popular cross-platform application development framework. Qt provides a wide range of tools and libraries that make it easy to create user-friendly graphical user interfaces (GUIs) and communicate with hardware devices.
+**Used Battery : 3 Sanyo 18650 2600mAh lithium-ion batteries**
 
-The software design of the PiRacer instrument cluster consists of several key components, including the main application, the CAN communication module, and the data display module.
+- Sanyo 18650 Lithium-ion battery’s State of Charge needs a complex function. Because the motherboard of PiRacer only has the current voltage of battery. So we need to mapping the voltage to percentage.
 
-The main application is responsible for managing the overall functionality of the instrument cluster. It creates the GUI, manages the communication with the speed sensor via the CAN bus, and displays the speed data on the screen.
+| Voltage (x3 cells) [V] | Battery Level [%] |
+| --- | --- |
+| 12.6 | 100 |
+| 12.3 | 91 |
+| 12.0 | 79 |
+| 11.7 | 62 |
+| 11.4 | 42 |
+| 11.1 | 12 |
+| 10.8 | 2 |
+| 10.5 | 0 |
 
-The CAN communication module is responsible for communicating with the speed sensor via the CAN bus. It receives speed data from the speed sensor and passes it on to the main application for display. This module uses the CAN library provided by Qt to communicate with the speed sensor.
+→ In this link[[https://lygte-info.dk/info/BatteryChargePercent UK.html](https://lygte-info.dk/info/BatteryChargePercent%20UK.html)], you can check the measurement of estimating remaining capacity in Lithium-ion batteries. The battery voltage (from 3.5V to 4.2V for each cell) is used to represent the battery charge from 0% to 100%. Since we have three 18650 cells in series, the total voltage ranges from 10.5V to 12.6V, with the corresponding percentages as follow
 
-The display module is responsible for displaying the speed data on the screen. It receives speed data from the main application and displays it in an easy-to-read format on the screen. This module can be customized to display the speed data in various ways, such as using a speedometer or a numerical display.
+**How to calculate battery percentage**
 
-The software design of the PiRacer instrument cluster application is designed to be flexible and scalable, allowing for future modifications and additions. The use of the Qt framework and modular design also makes it easy to maintain and update the application. 
-</br>
+```cpp
+int calculateBatteryPercentage(double voltage) {
+    if (voltage >= MAX_VOLTAGE) {
+        return 100;
+    } else if (voltage <= MIN_VOLTAGE) {
+        return 0;
+    } else {
+        return round(((voltage - MIN_VOLTAGE) / (MAX_VOLTAGE - MIN_VOLTAGE)) * 100);
+    }
+}
+```
 
+$$
+y(x)=−25.6269⋅x3+887.9706⋅x2−10180.5203⋅x+38661.8396
+$$
 
-## Implementation
+We decide to use this formula (linear transformation) to convert the voltage within a certain range into a percentage representing the battery level. According to the paper[[https://lygte-info.dk/info/BatteryChargePercent UK.html](https://lygte-info.dk/info/BatteryChargePercent%20UK.html)], we can also use a cubic polynomial to approximate the discharge curve to reflect the nonlinear characteristics of battery discharge. However, we used the above method for the following reasons. 1. Simplicity of calculation, 2. Since the voltage range is small, it is expected that no large errors will occur even if a linear model is used, 3. Since the remaining battery capacity must be quickly calculated and reflected in the UI, a linear method that ensures constant changes in remaining battery capacity use transformation.
 
-The implementation of the PiRacer instrument cluster application involves several key steps, including writing the code for the various components, testing the code, and deploying the application on the Raspberry Pi.
+**How to get the data**
 
-1. Writing the code: The first step in the implementation process is writing the code for the various components of the application. This includes writing the code for the main application, the CAN communication module, and the display module. The code should be written in a clear and organized manner, making use of best practices in software engineering.
-2. Testing the code: After writing the code, it is important to test it to ensure that it works correctly and meets the technical requirements. This can be done by running the code on the Raspberry Pi and verifying that it correctly receives speed data from the speed sensor and displays it on the screen.
-3. Deploying the application: Once the code has been tested and verified, the application can be deployed on the Raspberry Pi. This involves copying the code to the Raspberry Pi and executing it. The Raspberry Pi should be configured to boot up and run the application automatically upon startup.
+From Raspberry pi4, we can communicate directly with the I2C device. 
 
-The implementation process should be carefully planned and executed to ensure that the final product meets the technical requirements and provides a user-friendly interface for monitoring the speed of the vehicle. The implementation process should also be carefully documented, so that any future modifications or updates to the application can be made easily.
-</br>
+![image.png](https://private-user-images.githubusercontent.com/67433199/381590592-9c2ce56f-bc0a-4508-a35f-9804fb90d4d1.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzAyOTg0MjMsIm5iZiI6MTczMDI5ODEyMywicGF0aCI6Ii82NzQzMzE5OS8zODE1OTA1OTItOWMyY2U1NmYtYmMwYS00NTA4LWEzNWYtOTgwNGZiOTBkNGQxLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDEwMzAlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQxMDMwVDE0MjIwM1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWQwOGNjYTBhZWZkNjM5ZWFkNWUxYzc3OGUwNGQ3NDc0MGM3MzFmOTc2OGYzMjk5NWQyYzllMTU1ODMzZTgwNmQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.VbIucjZr1kkFlY2dwXaqly_IcOHQWtR1jHwOWloCtl8)
 
+INA219 Power Monitor is a device that can monitor current, voltage, power consumption and more via I2C communication. Set the I2C slave address of INA219 to **0x41**, use smbus to read the overcurrent and outputs the battery value.
 
-## Project Timeline
+**Set animation**
 
-The PiRacer Instrument Cluster Qt Application project is expected to take approximately 6-8 weeks to complete, with the following estimated timeline:
+The battery percentage calculation ensures that as the voltage drops from 12.6V to 10.5V, the battery level will correspondingly decrease from 100% to 0%, providing a smooth visual representation on the gauge in our Qt application. The smoothing mechanism (using a deque to average the latest 10 values) helps stabilize rapid fluctuations in the displayed percentage.
 
-* Week 1-2:
-  * Research and familiarization with the CAN bus protocol, speed sensors, and Qt.
-  * Design of the system architecture and software design.
+---
 
-* Week 3-4:
-  * Implementation of the Qt-based GUI for the instrument cluster.
-  * Integration of the speed sensor with the Raspberry Pi using the CAN bus protocol.
+## Code explanation - GUI
 
-* Week 5-6:
-  * Testing and debugging of the instrument cluster.
-  * Verification of real-time speed data display on the instrument cluster GUI.
+- Dial.qml
+    
+    This code represents the background of speedometer. The scale is drawn using the Canvas function.
+    
+- Needle.qml
+    
+    Needle is made using Rectangle function. Animation is applied to rotation to make the needle move smoothly according to the speed value.
+    
+- SpeedText.qml
+    
+    This component represents speed data. Text changes according to the speed value. An animation is implemented so that the value changes step by step.
+    
+- Clock.h
+    
+    The current time is expressed through QTimer. Time is updated every second. The timeChanged() signal is generated by the updateTime() slot to update the time.
+    
+- main.qml
+    
+    Just for placing the components and images. It was arranged taking into account the relationship between elements.
+    
+- main.cpp
+    
+    This code manages all of data generated on this project. It generates objects related to Clock, Speed, Battery and Running rate. The objects are connected with engines and load them. And it contains the part that opens the I2C_BUS to get the data
+    
+- get_battery.h & get_battery.cpp
+    
+    Using the I2C protocol send the register address to the I2C device, reads two bytes of data (buf[2]), combines the two bytes into a 16-bit value. And then read the Voltage, Current and Power to convert it into percentage. 
+    
+- battery_gauge.h & battery_gauge.cpp
+    
+    Set the speedometer using QQuickPaintedItem. It makes possible to use the QPainter with QML. This code represents the gauge of PiRacer’s battery percentage.
+    
 
-* Week 7-8:
-  * Final documentation and report writing, including a detailed explanation of the system architecture, software design, implementation, results, and conclusions.
-  * Preparation for final presentation and demonstration.
-</br>
+---
 
+## Code explanation - Docker
 
-## Collaboration and Teamwork
+All code in the Raspberry Pi is wrapped in the Docker container, to manage the code to the Raspberry Pi, which has different environment from the development environment or QT. It provides same libraries, version, etc.
 
-Students will be working in teams of maximum four to complete this project. Each team member will be assigned specific tasks and responsibilities, and will be expected to contribute to the overall success of the project. Teams will be required to do check-ins on regular progress reports and feedback.  
-</br>
+## Stack
 
+<table>
+  <tr>
+    <td align="center" width="140px">
+      <a href="https://www.linux.org/">
+        <img src="https://www.kernel.org/theme/images/logos/tux.png" width="48" height="48" alt="linux" />
+      </a>
+      <br />Linux
+    </td>
+    <td align="center" width="140px">
+      <a href="https://www.qt.io/">
+        <img src="https://www.qt.io/hubfs/Qt-logo-neon-small.png" width="60" height="40" alt="Grafana" />
+      </a>
+      <br />QT Quick
+    <td align="center" width="140px">
+      <a href="https://isocpp.org/">
+        <img src="https://isocpp.org/assets/images/cpp_logo.png" width="48" height="48" alt="c++" />
+      </a>
+      <br />C++
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="140px">
+      <a href="https://www.raspberrypi.com/">
+        <img src="https://upload.wikimedia.org/wikipedia/de/thumb/c/cb/Raspberry_Pi_Logo.svg/1200px-Raspberry_Pi_Logo.svg.png" width="40" height="48" alt="raspberrypi" />
+      </a>
+      <br />Raspberry Pi
+    </td>
+    <td align="center" width="140px">
+      <a href="https://www.arduino.cc/">
+        <img src="https://static-00.iconduck.com/assets.00/apps-arduino-icon-2048x2048-42m5bo99.png" width="48" height="48" alt="arduino" />
+      </a>
+      <br />Arduino
+    </td>
+    </td>
+    <td align="center" width="140px">
+      <a href="https://www.docker.com/">
+        <img src="https://www.svgrepo.com/show/349342/docker.svg" width="48" height="48" alt="docker" />
+      </a>
+      <br />Docker
+    </td>
+  </tr>
+</table>
 
-## Results
+## Contributors
+<table>
 
-The results of the PiRacer instrument cluster application can be evaluated based on the following factors:
-
-1. Functionality: The most important factor in evaluating the results of the project is the functionality of the application. Does the application receive speed data from the speed sensor via CAN and display it on the screen in a user-friendly manner? If the answer is yes, then the application can be considered a success.
-2. Usability: Another important factor in evaluating the results of the project is the usability of the application. Is the application user-friendly and easy to use? Does it provide a clear and intuitive interface for monitoring the speed of the vehicle? If the answer is yes, then the application can be considered a success.
-3. Reliability: The reliability of the application is another important factor in evaluating the results of the project. Does the application run smoothly and consistently without any errors or crashes? If the answer is yes, then the application can be considered a success.
-4. Maintainability: The maintainability of the application is another important factor in evaluating the results of the project. Is the code well-organized and easy to modify? Can future updates and modifications be made easily? If the answer is yes, then the application can be considered a success.
-
-</br>
-
-
-## Submission
-
-Turn in a github repository with following information:
-
-1. Code and relevant configuration files.
-2. Detailed descriptions of algorithms and data structures used in the implementation.
-3. Screenshots and diagrams of the instrument cluster user interface.
-4. Detailed test plans, test cases, and results of software testing and debugging.
-5. Detailed descriptions of the hardware components used in the project, including the Raspberry Pi and the speed sensor.
-6. A list of online resources and tutorials used in the project.
-7. Any additional material that supports the understanding of the project and provides context to the reader.  
-
-</br>
-
-## Evaluation
-In this project, every team must host ONE final submission demo & presentation (max. 30 mins) in front of all the other teams. Each team must find a way to organize this presentation making sure that all the other teams can be present and participate actively (Please work out what date/time works the best for every team). The date and time of each team's presentation must be communicated to staff well in advance (at least a week in advance). It is presenting team's responsibility to make sure that all the forms are filled in **immediately** after the presentation.
-
-This project has two evaluation forms:
-1. For evaluators (the audience) - Fill in [this form](https://docs.google.com/forms/d/e/1FAIpQLSePixvxR1Bk-camL9IMAn8xDPxVNl3TAjwX7Z9ceruHsp9spA/viewform?usp=sf_link) to evaluate the presenting team's final project submission
-2. For evaluatee (the presentor) - Fill in [this form](https://docs.google.com/forms/d/e/1FAIpQLSdnnoSJPRx1OrrhPhs-bLlVrBM1-n_cYO_QLZ7_ntLIuCL0Qw/viewform?usp=sf_link) for general feedback on your workings on this project.
-
-
-
-## References
-
-1. Embedded Systems Design with the Raspberry Pi, by Muhammed Ali, Packt Publishing (2017)
-2. The Qt Company (2021). Qt 5.15.0 Reference Documentation. Available at: https://doc.qt.io/qt-5/index.html
-3. Bosch, R. (2016). Automotive Handbook (9th edition). Springer.
-4. SAE International (2018). J1939 Digital Annex Document, Society of Automotive Engineers, Warrendale, PA.
-5. CAN in Automation (CiA) e.V. (2017). CAN FD Specification Version 1.0.
-6. K. Mäntylä, T. Mäntylä (2008). “Requirements Engineering Processes in the Automotive Domain.” Journal of Systems and Software, vol. 81, no. 11, pp. 19-29.
-7. H. Elmqvist, B. Englund (2010). “Qt Quick and QML for N950”. Available at: https://www.slideshare.net/QtDevelopment/qt-quick-and-qml-for-n950
-8. Raspberry Pi Foundation (2021). Raspberry Pi Hardware Reference. Available at: https://www.raspberrypi.org/documentation/hardware/raspberrypi/
-9. R. Davis (2016). “Agile Estimating and Planning”. Prentice Hall.
-10. I. Sommerville (2011). “Software Engineering”. Addison-Wesley.  
-
-</br>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/jo49973477>">
+        <img src="https://github.com/jo49973477.png" width="150px;" alt="Yeongyoo Jo"/>
+        <br />
+        <sub><b>Yeongyoo Jo</b></sub>
+      </a>
+      <br />
+      <a href="https://github.com/jo49973477"><img src="https://img.shields.io/badge/GitHub-jo49973477-blue?logo=github" alt="GitHub Badge" /></a>
+      <br />
+    </td>
+    <td align="center">
+      <a href="https://github.com/iznue">
+        <img src="https://github.com/iznue.png" width="150px;" alt="Eunji Lee"/>
+        <br />
+        <sub><b>Eunji Lee</b></sub>
+      </a>
+      <br />
+      <a href="https://github.com/iznue"><img src="https://img.shields.io/badge/GitHub-iznue-blue?logo=github" alt="GitHub Badge" /></a>
+      <br />
+    </td>
+    <td align="center">
+      <a href="https://github.com/junspring">
+        <img src="https://github.com/junspring.png" width="150px;" alt="Junbeom Jung"/>
+        <br />
+        <sub><b>Junbeom Jung</b></sub>
+      </a>
+      <br />
+      <a href="https://github.com/junspring"><img src="https://img.shields.io/badge/GitHub-junspring-blue?logo=github" alt="GitHub Badge" /></a>
+      <br />
+    </td>
+    <td align="center">
+      <a href="https://github.com/YEOHANBIN">
+        <img src="https://github.com/YEOHANBIN.png" width="150px;" alt="Hanbin Yeo"/>
+        <br />
+        <sub><b>Hanbin Yeo</b></sub>
+      </a>
+      <br />
+      <a href="https://github.com/YEOHANBIN"><img src="https://img.shields.io/badge/GitHub-YEOHANBIN-blue?logo=github" alt="GitHub Badge" /></a>
+      <br />
+      <td align="center">
+      <a href="https://github.com/Ziyad129-ux">
+        <img src="https://github.com/Ziyad129-ux.png" width="150px;" alt="Ziyad"/>
+        <br />
+        <sub><b>Ziyad</b></sub>
+      </a>
+      <br />
+      <a href="https://github.com/Ziyad129-ux"><img src="https://img.shields.io/badge/GitHub-Ziyad129-blue?logo=github" alt="GitHub Badge" /></a>
+      <br />
+    </td>
+    
+  </tr>
+</table>
