@@ -148,6 +148,7 @@ All code in the Raspberry Pi is wrapped in the Docker container, to manage the c
 
 ## Stack
 
+<center>
 <table>
   <tr>
     <td align="center" width="140px">
@@ -190,6 +191,7 @@ All code in the Raspberry Pi is wrapped in the Docker container, to manage the c
     </td>
   </tr>
 </table>
+</center>
 
 ## Contributors
 <table>
