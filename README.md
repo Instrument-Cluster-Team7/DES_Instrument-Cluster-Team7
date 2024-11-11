@@ -9,7 +9,7 @@
 
 ## Introduction
 
-The PiRacer instrument cluster Qt application project is aimed at creating a real-time speedometer for a PiRacer car. The speedometer GUI of PiRacer car displays real-time speed data from a speed sensor via CAN bus, and it shows the battery level of PiRacer via I2C bus between PiRacer and Raspberry Pi.
+The PiRacer instrument cluster Qt application project is aimed at creating a real-time speedometer for a PiRacer car. The speedometer GUI of PiRacer car displays real-time speed data from a speed sensor via CAN bus, and it shows the battery level of PiRacer via I2C bus between PiRacer and Raspberry Pi. [Here is the detailed explanation of our goal of this project.](https://github.com/SEA-ME/DES_Instrument-Cluster)
 
 ---
 
